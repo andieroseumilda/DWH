@@ -14,17 +14,17 @@ public class Page2 {
 		step2 = new locator_step2(driver);
 	}
 	
-	public void get_room(String payment_settings, int no_of_rooms) {
+	public void get_room(String test_server, String payment_settings, int no_of_rooms) {
 		WebElement room_type = null;
 
-		switch (payment_settings) {
-		case "DWH":
-			room_type = step2.selectDwhRoom();
-			break;		
-		default : 
-			room_type = step2.selectHppRoom();
-			break;
-		}
+		if (test_server == "staging"){
+			if (payment_settings=="DWH"){
+				room_type = step2.selectDwhRoom();
+			}else {
+				room_type = step2.selectHppRoom();
+			}
+		}		
+
 		Select room = new Select(room_type);
 		room.selectByIndex(no_of_rooms);
 		}
@@ -38,8 +38,8 @@ public class Page2 {
 		step2.closeWindow().click();
 	}
 	
-	public void selectRoom(String paymentProcessor, int no_of_rooms) {
-		get_room(paymentProcessor, no_of_rooms);
+	public void selectRoom(String test_server, String payment_settings, int no_of_rooms) {
+		get_room(test_server, payment_settings, no_of_rooms);
 		step2.btnReserve().click();
 		//step2.fullRatePlan().click();
 	}

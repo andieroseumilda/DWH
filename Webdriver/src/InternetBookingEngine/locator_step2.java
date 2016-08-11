@@ -15,9 +15,8 @@ public class locator_step2 {
 	// Constructor
 	public locator_step2(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 25);
+		this.wait = new WebDriverWait(driver, 60);
 	}
-
 
 	// Element Locators
 	@FindBy(id = "room_20649_9728_1")

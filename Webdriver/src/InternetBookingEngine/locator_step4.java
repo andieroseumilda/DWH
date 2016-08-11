@@ -14,7 +14,7 @@ public class locator_step4 {
 	// Constructor
 	public locator_step4(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 25);
+		this.wait = new WebDriverWait(driver, 60);
 	}
 
 	// Element Locator

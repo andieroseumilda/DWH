@@ -24,11 +24,11 @@ public class GetAllPages {
 		page5 = new Page5(driver);
 	}
 	
-	public void makeReservation(String payment_settings, int no_of_rooms){
-		page1.openIbe(payment_settings);
+	public void makeReservation(String test_server, String payment_settings, int no_of_rooms){
+		page1.openIbe(test_server,payment_settings);
 		page1.selectStayDates();
 		page2.dwhCopy();
-		page2.selectRoom(payment_settings, no_of_rooms);
+		page2.selectRoom(test_server, payment_settings, no_of_rooms);
 		page3.clickGuestDetailsStep3();
 		page4.paymentPage(payment_settings);
 		page5.confirmPage();
