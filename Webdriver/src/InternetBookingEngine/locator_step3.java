@@ -12,7 +12,7 @@ public class locator_step3 {
 
 	public locator_step3(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 60);
+		this.wait = new WebDriverWait(driver, 25);
 	}
 
 	// Element Locators

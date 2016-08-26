@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Page1 {
 	WebDriver driver;
+	private GetDate selectStayDates;
 	private locator_step1 step1;
 	private Environment testServer;
 
@@ -11,6 +12,7 @@ public class Page1 {
 		this.driver = driver;
 		step1 = new locator_step1(driver);
 		testServer = new Environment(driver);
+		selectStayDates = new GetDate(driver);
 	}
 
 	//
@@ -20,8 +22,10 @@ public class Page1 {
 
 	public void selectStayDates() {
 		// Select arrival and departure dates
-		step1.selectArrival().click();
-		step1.selectDeparture().click();
+//		step1.selectArrival().click();
+//		step1.selectDeparture().click();
+		selectStayDates.selectArrivalDate();	
+		selectStayDates.selectDeparture();
 		step1.clickViewRoomAndPrices().click();
 	}
 

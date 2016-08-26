@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 
@@ -15,7 +17,7 @@ public class locator_step2 {
 	// Constructor
 	public locator_step2(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 60);
+		this.wait = new WebDriverWait(driver, 80);
 	}
 
 	// Element Locators
@@ -24,9 +26,6 @@ public class locator_step2 {
 
 	@FindBy(id = "room_21048_8895_1")
 	private WebElement selectHppRoom;
-
-	@FindBy(id = "ctaReserve")
-	private WebElement btnReserve;
 
 	@FindBy(id = "rpName_20649") // Full Ref, Full Charge
 	private WebElement clickFullRatePlan;
@@ -40,6 +39,9 @@ public class locator_step2 {
 	@FindBy(xpath = "html/body/div[4]/div[1]/a/i")
 	private WebElement closeWindow;
 
+	@FindBy(id = "ctaReserve")
+	private WebElement btnReserve;
+	
 	// Get Element Locators
 	public WebElement selectDwhRoom() {
 		return wait.until(elementToBeClickable(selectDwhRoom));
@@ -62,11 +64,11 @@ public class locator_step2 {
 	}
 	
 	public WebElement closeWindow() {
-		return closeWindow;
+		return wait.until(elementToBeClickable(closeWindow));
 	}
 
 	public WebElement btnReserve() {
-		return btnReserve;
+		return wait.until(ExpectedConditions.elementToBeClickable(btnReserve));
 	}
 
 }

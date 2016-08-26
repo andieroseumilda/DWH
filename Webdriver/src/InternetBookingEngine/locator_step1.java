@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class locator_step1 {
 
 	private WebDriverWait wait;
+	
 
 	// Constructor
 	public locator_step1(WebDriver driver) {
