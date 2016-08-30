@@ -1,8 +1,10 @@
 package InternetBookingEngine;
 
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
 import static org.junit.Assert.assertEquals;
 
 public class Page2 {
@@ -24,8 +26,11 @@ public class Page2 {
 		}
 
 		Select room = new Select(room_type);
-		room.selectByIndex(no_of_rooms);
-		step2.btnReserve().click();
+		room.selectByIndex(no_of_rooms);		
+		
+		if(no_of_rooms!=0){
+			clickReserveNow();
+		}
 	}
 
 	public void dwhCopy() {
@@ -40,9 +45,9 @@ public class Page2 {
 	public void selectRoom(String test_server, String payment_settings, int no_of_rooms) {
 		get_room(test_server, payment_settings, no_of_rooms);
 		//step2.fullRatePlan().click();
-		
 	}
 
-
-
+	public void clickReserveNow(){
+		step2.btnReserve().click();
+	}
 }
