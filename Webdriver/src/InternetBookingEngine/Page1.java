@@ -21,9 +21,6 @@ public class Page1 {
 	}
 
 	public void selectStayDates() {
-		// Select arrival and departure dates
-//		step1.selectArrival().click();
-//		step1.selectDeparture().click();
 		selectStayDates.selectArrivalDate();	
 		selectStayDates.selectDeparture();
 		step1.clickViewRoomAndPrices().click();

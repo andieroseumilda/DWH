@@ -26,11 +26,9 @@ public class Page2 {
 		}
 
 		Select room = new Select(room_type);
-		room.selectByIndex(no_of_rooms);		
+		room.selectByIndex(no_of_rooms);	
 		
-		if(no_of_rooms!=0){
-			clickReserveNow();
-		}
+	
 	}
 
 	public void dwhCopy() {
@@ -45,9 +43,12 @@ public class Page2 {
 	public void selectRoom(String test_server, String payment_settings, int no_of_rooms) {
 		get_room(test_server, payment_settings, no_of_rooms);
 		//step2.fullRatePlan().click();
+		step2.clickReserveNow().click();
+		step2.clickReserveNow().click();
 	}
 
-	public void clickReserveNow(){
-		step2.btnReserve().click();
+	public void openIbe(String test_server, String payment_settings){
+		
 	}
+	
 }

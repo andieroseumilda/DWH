@@ -29,12 +29,24 @@ public class GetAllPages {
 		page1.selectStayDates();
 		page2.dwhCopy();
 		page2.selectRoom(test_server, payment_settings, no_of_rooms);
+		//page2.clickReserveNow();
 		page3.clickGuestDetailsStep3();
 		page4.paymentPage(payment_settings);
 		page5.confirmPage();
 		closePage();
 		
 	}
+	
+	public void makeReservation_fromStep2(String test_server, String payment_settings, int no_of_rooms){
+		page2.openIbe(test_server, payment_settings);
+		page2.dwhCopy();
+		page2.selectRoom(test_server, payment_settings, no_of_rooms);
+		//page2.clickReserveNow();
+		page3.clickGuestDetailsStep3();
+		page4.paymentPage(payment_settings);
+		page5.confirmPage();
+		closePage();
+	}	
 	
 	public void closePage() {
 		driver.close();

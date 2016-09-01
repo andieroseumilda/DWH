@@ -20,27 +20,11 @@ public class locator_step1 {
 	}
 	
 	// Element Locations
-	@FindBy(linkText = "14")
-	private WebElement selectArrival;
-	
-	@FindBy(linkText = "16")
-	private WebElement selectDeparture;
-
 	@FindBy(id = "btnNext")
 	private WebElement clickViewRoomAndPrices;
-	
+
 	// Get Element Locations
-	public WebElement selectArrival() {
-		return wait.until(elementToBeClickable(selectArrival));
-	}
-
-	public WebElement selectDeparture() {
-		return selectDeparture;
-	}
-
 	public WebElement clickViewRoomAndPrices() {
-		return clickViewRoomAndPrices;
+		return wait.until(elementToBeClickable(clickViewRoomAndPrices));
 	}
-	
-
 }

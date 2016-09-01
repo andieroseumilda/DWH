@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
@@ -17,7 +16,7 @@ public class locator_step2 {
 	// Constructor
 	public locator_step2(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 80);
+		this.wait = new WebDriverWait(driver, 256);
 	}
 
 	// Element Locators
@@ -40,7 +39,8 @@ public class locator_step2 {
 	private WebElement closeWindow;
 
 	@FindBy(id = "ctaReserve")
-	private WebElement btnReserve;
+	private WebElement clickReserveNow;
+	
 	
 	// Get Element Locators
 	public WebElement selectDwhRoom() {
@@ -67,8 +67,8 @@ public class locator_step2 {
 		return wait.until(elementToBeClickable(closeWindow));
 	}
 
-	public WebElement btnReserve() {
-		return wait.until(ExpectedConditions.elementToBeClickable(btnReserve));
+	public WebElement clickReserveNow() {
+		return wait.until(elementToBeClickable(clickReserveNow));
 	}
 
 }
