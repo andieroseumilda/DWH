@@ -16,8 +16,8 @@ public class Page1 {
 	}
 
 	//
-	public void openIbe(String test_server, String payment_settings) {
-		testServer.selectUrl(test_server, payment_settings);
+	public void openIbe(String test_server, String payment_settings,  int step) {
+		testServer.selectUrl(test_server, payment_settings, step);
 	}
 
 	public void selectStayDates() {

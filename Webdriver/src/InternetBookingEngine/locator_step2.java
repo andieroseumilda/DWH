@@ -4,6 +4,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
@@ -16,7 +17,7 @@ public class locator_step2 {
 	// Constructor
 	public locator_step2(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 256);
+		this.wait = new WebDriverWait(driver, 60);
 	}
 
 	// Element Locators
@@ -44,11 +45,12 @@ public class locator_step2 {
 	
 	// Get Element Locators
 	public WebElement selectDwhRoom() {
-		return wait.until(elementToBeClickable(selectDwhRoom));
+		return wait.until(ExpectedConditions.visibilityOf(selectDwhRoom));
+		//return selectDwhRoom;
 	}
 
 	public WebElement selectHppRoom() {
-		return wait.until(elementToBeClickable(selectHppRoom));
+		return selectHppRoom;
 	}
 
 	public WebElement dwhFullRefModif(){
@@ -67,7 +69,7 @@ public class locator_step2 {
 		return wait.until(elementToBeClickable(closeWindow));
 	}
 
-	public WebElement clickReserveNow() {
+	public WebElement clickReserveNowStep2() {
 		return wait.until(elementToBeClickable(clickReserveNow));
 	}
 
