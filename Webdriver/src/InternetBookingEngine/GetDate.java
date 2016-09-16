@@ -30,7 +30,7 @@ public class GetDate {
 	protected void selectArrivalDate(){
 		this.now = Calendar.getInstance();
 		//getDay = now.get(getDayFormat); // current date
-		now.add(getDayFormat, 0);
+		now.add(getDayFormat, 2);
 		Date complete_date_1 = now.getTime();
 		getDay = date_format.format(complete_date_1); 
 		WebElement arrivalDate = wait.until(elementToBeClickable(By.linkText(String.valueOf(getDay))));

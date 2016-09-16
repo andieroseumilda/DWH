@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class locator_step4 {
 
@@ -50,6 +50,12 @@ public class locator_step4 {
 
 	@FindBy(id = "opt_yes")
 	private WebElement yesOwner;
+	
+	@FindBy(id = "opt_no")
+	private WebElement notOwner;
+	
+	@FindBy(id = "payment_cc_name")
+	private WebElement ccName;
 
 	@FindBy(id = "payment_cc_exp_month")
 	private WebElement expMonth;
@@ -66,13 +72,14 @@ public class locator_step4 {
 	@FindBy(id = "btnconfirmbooking")
 	private WebElement btnConfirm;
 
+	
 	// Get Element Locator
 	public WebElement firstName() {
-		return wait.until(elementToBeClickable(firstName));
+		return wait.until(visibilityOf(firstName));
 	}
 
 	public WebElement lastName() {
-		return lastName;
+		return wait.until(visibilityOf(lastName));
 	}
 
 	public WebElement emailAdd() {
@@ -110,6 +117,14 @@ public class locator_step4 {
 	public WebElement yesOwner() {
 		return yesOwner;
 	}
+	
+	public WebElement notOwner() {
+		return notOwner;
+	}
+	
+	public WebElement ccName() {
+		return ccName;
+	}
 
 	public WebElement expMonth() {
 		return expMonth;
@@ -130,5 +145,6 @@ public class locator_step4 {
 	public WebElement btnConfirm() {
 		return btnConfirm;
 	}
+	
 
 }

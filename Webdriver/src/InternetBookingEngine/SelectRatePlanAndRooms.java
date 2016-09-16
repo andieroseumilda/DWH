@@ -6,7 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+//import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 public class SelectRatePlanAndRooms {
 	
@@ -36,11 +36,11 @@ public class SelectRatePlanAndRooms {
 		}
 		
 		public WebElement nightly_full_ref_fullCharge() {
-			return wait.until(ExpectedConditions.visibilityOf(nightly_partial_nonref_fullCharge));
+			return wait.until(ExpectedConditions.visibilityOf(nightly_full_ref_fullCharge));
 		}
 		
 		public WebElement nightly_full_nonref_notAllowed() {
-			return wait.until(ExpectedConditions.visibilityOf(nightly_partial_nonref_fullCharge));
+			return wait.until(ExpectedConditions.visibilityOf(nightly_full_nonref_notAllowed));
 		}
 		
 

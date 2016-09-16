@@ -16,6 +16,7 @@ public class Page4 {
 	private String sRequest;
 	private String ccType;
 	private String ccNumber;
+	private String ccName;
 	private String expMonth;
 	private String expYear;
 	private String ccV;
@@ -26,7 +27,7 @@ public class Page4 {
 		step4 = new locator_step4(driver);
 	}
 
-	public void paymentPage(String payment_settings) {
+	public void paymentPage(String payment_settings, boolean cc_owner) {
 		step4.firstName().sendKeys(get_firstname(payment_settings));
 		step4.lastName().sendKeys(get_lastName(payment_settings));
 		step4.emailAdd().sendKeys(get_emailAdd(payment_settings));
@@ -37,7 +38,12 @@ public class Page4 {
 		step4.sRequest().sendKeys(get_sRequest(payment_settings));
 		step4.ccType().sendKeys(get_ccType(payment_settings));
 		step4.ccNumber().sendKeys(get_ccNumber(payment_settings));
-		step4.yesOwner().click();
+		if(cc_owner){
+			step4.yesOwner().click();
+		}else{
+			step4.notOwner().click();
+			step4.ccName().sendKeys(get_ccName(payment_settings));
+		}
 		step4.expMonth().sendKeys(get_expMonth(payment_settings));
 		step4.expYear().sendKeys(get_expYear(payment_settings));
 		step4.ccV().sendKeys(get_ccV(payment_settings));
@@ -185,6 +191,20 @@ public class Page4 {
 			System.out.println("end");
 		}		
 		return ccNumber;
+	}
+	
+	private String get_ccName(String payment_settings){
+		switch (payment_settings) {
+		case "DWH":
+			ccName = "On hold Prepayment";
+			break;
+		case "HPP":
+			ccName = "On hold Prepayment";
+			break;
+		default:
+			System.out.println("end");
+		}		
+		return ccName;
 	}
 	
 	private String get_expMonth(String payment_settings){
