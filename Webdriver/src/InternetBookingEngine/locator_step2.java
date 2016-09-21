@@ -17,16 +17,10 @@ public class locator_step2 {
 	// Constructor
 	public locator_step2(WebDriver driver) {
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 01);
+		this.wait = new WebDriverWait(driver, 1);
 	}
 
 	// Element Locators
-//	@FindBy(id = "rpName_20649") // Full Ref, Full Charge
-//	private WebElement clickFullRatePlan;
-//
-//	@FindBy(xpath = "html/body/div[4]/div[2]/div/ul/li[2]/a")
-//	private WebElement clickReservationPolicies;
-
 	@FindBy(xpath = "html/body/div[4]/div[2]/div/div/div[2]/ul/li[5]")
 	private WebElement dwhFullRefModif;
 	
@@ -38,23 +32,9 @@ public class locator_step2 {
 	
 	
 	// Get Element Locators
-//	public WebElement selectDwhRoom() {
-//		return wait.until(ExpectedConditions.visibilityOf(selectDwhRoom));
-//		//return selectDwhRoom;
-//	}
-
-//	public WebElement selectHppRoom() {
-//		return selectHppRoom;
-//	}
-
 	public WebElement dwhFullRefModif(){
 		return wait.until(elementToBeClickable(dwhFullRefModif));
 	}
-
-
-//	public WebElement clickReservationPolicies(){
-//		return wait.until(elementToBeClickable(clickReservationPolicies));
-//	}
 	
 	public WebElement closeWindow() {
 		return wait.until(elementToBeClickable(closeWindow));

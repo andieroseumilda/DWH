@@ -1,6 +1,7 @@
 package InternetBookingEngine;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -15,7 +16,7 @@ public class locator_onhold {
 	
 	public locator_onhold(WebDriver driver){
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 60);
+		this.wait = new WebDriverWait(driver, 50);
 	}
 	
 	// Element Locations
@@ -25,17 +26,20 @@ public class locator_onhold {
 	@FindBy(xpath = "html/body/div[3]/div[2]/div[4]/div/div[2]/div[7]/b/a")
 	private WebElement click_skip_downloadCc;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[4]/div/div[2]/div[1]/button[1]")
-	private WebElement click_cc_front;
+	@FindBy(id = "front_file")
+	private WebElement input_cc_front;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[4]/div/div[2]/div[2]/button[1]")
-	private WebElement click_cc_back;
+	@FindBy(id = "back_file")
+	private WebElement input_cc_back;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[4]/div/div[2]/div[3]/button[1]")
-	private WebElement click_id_front;
+	@FindBy(id = "photo_file")
+	private WebElement input_id_front;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[4]/div/div[2]/div[4]/button[1]")
-	private WebElement click_id_back;
+	@FindBy(id = "optional_file")
+	private WebElement input_id_back;
+	
+	@FindBy(id = "btnUpload")
+	private WebElement click_upload_and_continue;
 	
 	// Get Element Locations
 	public WebElement btnCcFraudModal() {
@@ -46,19 +50,23 @@ public class locator_onhold {
 		return wait.until(elementToBeClickable(click_skip_downloadCc));
 	}
 	
-	public WebElement click_cc_front() {
-		return wait.until(elementToBeClickable(click_cc_front));
+	public WebElement input_cc_front() {
+		return wait.until(visibilityOf(input_cc_front));
 	}
 	
-	public WebElement click_cc_back() {
-		return wait.until(elementToBeClickable(click_cc_back));
+	public WebElement input_cc_back() {
+		return wait.until(visibilityOf(input_cc_back));
 	}
 	
-	public WebElement click_id_front() {
-		return wait.until(elementToBeClickable(click_id_front));
+	public WebElement input_id_front() {
+		return wait.until(visibilityOf(input_id_front));
 	}
 	
-	public WebElement click_id_back() {
-		return wait.until(elementToBeClickable(click_id_back));
+	public WebElement input_id_back() {
+		return wait.until(visibilityOf(input_id_back));
+	}
+	
+	public WebElement click_upload_and_continue() {
+		return wait.until(elementToBeClickable(click_upload_and_continue));
 	}
 }

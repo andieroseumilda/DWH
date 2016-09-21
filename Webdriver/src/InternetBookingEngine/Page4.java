@@ -1,11 +1,9 @@
 package InternetBookingEngine;
 
-
 import org.openqa.selenium.WebDriver;
 
 public class Page4 {
-	// Start webDriver
-	WebDriver driver;
+
 	private String firstName;
 	private String lastName;
 	private String emailAdd;
@@ -23,7 +21,6 @@ public class Page4 {
 	private locator_step4 step4;
 
 	public Page4(WebDriver driver) {
-		this.driver = driver;
 		step4 = new locator_step4(driver);
 	}
 
@@ -83,10 +80,10 @@ public class Page4 {
 	private String get_emailAdd(String payment_settings) {
 		switch (payment_settings) {
 		case "DWH":
-			emailAdd = "andielyne.umilda@directwithhotels.com";
+			emailAdd = "dwh.testemail@gmail.com";
 			break;
 		case "HPP":
-			emailAdd = "andielyne.umilda@directwithhotels.com";
+			emailAdd = "dwh.testemail@gmail.com";
 			break;
 		default:
 			System.out.println("end");
@@ -97,10 +94,10 @@ public class Page4 {
 	private String get_emailConfirm(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			emailConfirm = "andielyne.umilda@directwithhotels.com";
+			emailConfirm = "dwh.testemail@gmail.com";
 			break;
 		case "HPP":
-			emailConfirm = "andielyne.umilda@directwithhotels.com";
+			emailConfirm = "dwh.testemail@gmail.com";
 			break;
 		default:
 			System.out.println("end");

@@ -12,6 +12,8 @@ public class InputDataIBE {
 	private Browsers browser;
 	private GetAllPages dwhIbe;
 	private Environment env;
+	private String test_environment = "staging";
+	private int start_from_this_page = 1;
 	
 	@BeforeMethod
 	public void setup() throws MalformedURLException {
@@ -19,27 +21,39 @@ public class InputDataIBE {
 		driver = browser.firefoxDriver();
 		dwhIbe = new GetAllPages(driver);
 		env = new Environment(driver);
-		env.openIbe("staging","DWH" , 1);
+		env.openIbe(test_environment, "DWH" , start_from_this_page);
 	}	
+	
+	/*
+	Parameters for creating a reservation in order:
+	environment, payment_processor, step, prepayment, no. of rooms, ccowner, upload_image 
+	 */
 	
 	@Test
 	public void bookingEngine_DWH_Partial_NonRef() throws MalformedURLException {
-		dwhIbe.makeReservation("staging", "DWH", 1 , "Partial Nonref", 2, false);
-		// environment, payment_processor, step, no. of rooms
+		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Partial Nonref", 2, true, false);
 	}
-//	
-//	@Test
-//	public void bookingEngine_DWH_Full_Ref() throws MalformedURLException {
-//		dwhIbe.makeReservation("staging", "DWH", 1 , "Full Ref", 2, true);
-		// environment, payment_processor, step, no. of rooms
-//	}
 	
-//	@Test
-//	public void bookingEngine_DWH_Full_Nonref() throws MalformedURLException {
-//		dwhIbe.makeReservation("staging", "DWH", 1 , "Full Nonref", 2, true);
-//		// environment, payment_processor, step, no. of rooms
-//	}
-//	
+	@Test
+	public void bookingEngine_DWH_Full_Ref() throws MalformedURLException{
+		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Ref", 2, true, false);
+	}
+	
+	@Test
+	public void bookingEngine_DWH_Full_Nonref() throws MalformedURLException {
+		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, true, false);
+	}
+	
+	@Test
+	public void bookingEngine_DWH_Full_Nonref_Onhold() throws MalformedURLException {
+		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, true, true);
+	}
+	
+	@Test
+	public void bookingEngine_DWH_Full_Nonref_Onhold_pending() throws MalformedURLException {
+		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, true, false);
+	}
+	
 	
 	@AfterMethod
 	public void teardown() {
@@ -47,11 +61,4 @@ public class InputDataIBE {
 		driver.quit();
 	}
 
-
-//	@Test
-//	public void bookingEngine_HPP() throws MalformedURLException {
-//
-//		PaymentProcessor dwhIbe = new PaymentProcessor();
-//		dwhIbe.reservation("HPP", 3);
-//	}
 }

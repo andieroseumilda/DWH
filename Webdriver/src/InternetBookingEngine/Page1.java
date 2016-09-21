@@ -13,8 +13,6 @@ public class Page1 {
 		selectStayDates = new GetDate(driver);
 	}
 
-	//
-
 	public void selectStayDates() {
 		selectStayDates.selectArrivalDate();	
 		selectStayDates.selectDeparture();

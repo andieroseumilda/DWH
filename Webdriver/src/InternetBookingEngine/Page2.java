@@ -13,10 +13,9 @@ public class Page2 {
 
 	private locator_step2 step2;
 	private locator_step3 step3;
-	//	private Policies_copies copy;
 	private SelectRatePlanAndRooms select_room;
-	WebDriver driver;
-	boolean a = true;
+	private WebDriver driver;
+	//	private Policies_copies copy;
 
 	public Page2(WebDriver driver) {
 		step2 = new locator_step2(driver);
@@ -25,11 +24,10 @@ public class Page2 {
 		this.driver = driver;
 	}
 
-	public void get_room(String test_server, String payment_settings, String room_name, int no_of_rooms) {
+	public void selectRoom(String test_server, String payment_settings, String room_name, int no_of_rooms) {
 		WebElement room_type = null;
 
 		if (payment_settings=="DWH"){
-			//room_type = select_room.nightly_partial_nonref_fullcharge();
 			if(room_name == "Partial Nonref"){
 				room_type = select_room.nightly_partial_nonref_fullcharge();
 			}else if(room_name == "Full Ref"){
@@ -37,12 +35,11 @@ public class Page2 {
 			}else if(room_name == "Full Nonref"){
 				room_type = select_room.nightly_partial_nonref_fullcharge();
 			}else{
-				System.out.println(" No rooms available");
+				System.err.println(" No rooms available");
 			}
 		}
 
 		Select room = new Select(room_type);
-		System.out.println(room);
 		room.selectByIndex(no_of_rooms);
 		clickReserveNow();
 		try {
@@ -53,10 +50,11 @@ public class Page2 {
 				clickReserveNow();
 			}
 		}
-
-
 	}
 
+	public void clickReserveNow(){
+		step2.clickReserveNowStep2().click();
+	}
 
 	//public void dwhCopy() {
 	//	copy = new Policies_copies();
@@ -66,15 +64,5 @@ public class Page2 {
 	//	assertEquals(step2.dwhFullRefModif().getText(), copy.fullChargeModifPol());
 	//	step2.closeWindow().click();
 	//}
-
-
-	public void selectRoom(String test_server, String payment_settings, String room_name, int no_of_rooms) {
-		get_room(test_server, payment_settings, room_name, no_of_rooms);
-	}
-
-	public void clickReserveNow(){
-		step2.clickReserveNowStep2().click();
-	}
-
 
 }

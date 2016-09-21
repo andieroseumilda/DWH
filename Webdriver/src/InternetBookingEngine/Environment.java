@@ -18,7 +18,6 @@ public class Environment {
 	private int hpp_web_page = 17371;
 	private String page1 = "selectDates/";
 	private String page2 = "showRooms/";
-	private String assignPage;
 	private Calendar now;
 	private SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
 	private int getDayFormat = Calendar.DATE;
@@ -29,8 +28,8 @@ public class Environment {
 		this.driver = driver;
 	}
 
-	public void selectUrl(String test_server, String payment_settings, int step){
-
+	public void openIbe(String test_server, String payment_settings,  int step) {
+		
 		if (test_server == "staging"){
 			select_test_server = environment_staging;
 			if (payment_settings == "DWH"){
@@ -56,33 +55,19 @@ public class Environment {
 		}
 
 		if (step == 1){
-			assignPage = page1;
-			System.out.println(select_test_server + base_url + assignPage + hotel_id);
-			driver.get(select_test_server + base_url + assignPage + hotel_id);
+			driver.get(select_test_server + base_url + page1 + hotel_id);
 		}else{	
-
-			assignPage = page2;
-
 			now = Calendar.getInstance();
 			now.add(getDayFormat, 1);
 			Date complete_date_1 = now.getTime();
 			getDay = date_format.format(complete_date_1); 
-			System.out.println(getDay);
 
 			now.add(getDayFormat, 3);
 			Date complete_date_2 = now.getTime();
 			getDeparture = date_format.format(complete_date_2);  // added dates
-			System.out.println(getDeparture);
 
-			driver.get(select_test_server + base_url + assignPage  + hotel_id + "/" + getDay + "/" + getDeparture + "/en/0/0/0/0");
-			//System.out.println(select_test_server + base_url + assignPage  + hotel_id + "/" + getDay + "/" + getDeparture + "/en/0/0/0/0");
-
-		}
-
-	}
-
-	public void openIbe(String test_server, String payment_settings,  int step) {
-		selectUrl(test_server, payment_settings, step);
+			driver.get(select_test_server + base_url + page2  + hotel_id + "/" + getDay + "/" + getDeparture + "/en/0/0/0/0");
+		}		
 	}
 
 
