@@ -20,9 +20,9 @@ public class Environment {
 	private String page2 = "showRooms/";
 	private Calendar now;
 	private SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
-	private int getDayFormat = Calendar.DATE;
-	private String getDay;
-	private String getDeparture;
+	private int get_day_format = Calendar.DATE;
+	private String get_day;
+	private String get_departure;
 
 	public Environment(WebDriver driver) {
 		this.driver = driver;
@@ -58,15 +58,15 @@ public class Environment {
 			driver.get(select_test_server + base_url + page1 + hotel_id);
 		}else{	
 			now = Calendar.getInstance();
-			now.add(getDayFormat, 1);
+			now.add(get_day_format, 1);
 			Date complete_date_1 = now.getTime();
-			getDay = date_format.format(complete_date_1); 
+			get_day = date_format.format(complete_date_1); 
 
-			now.add(getDayFormat, 3);
+			now.add(get_day_format, 3);
 			Date complete_date_2 = now.getTime();
-			getDeparture = date_format.format(complete_date_2);  // added dates
+			get_departure = date_format.format(complete_date_2);  // added dates
 
-			driver.get(select_test_server + base_url + page2  + hotel_id + "/" + getDay + "/" + getDeparture + "/en/0/0/0/0");
+			driver.get(select_test_server + base_url + page2  + hotel_id + "/" + get_day + "/" + get_departure + "/en/0/0/0/0");
 		}		
 	}
 

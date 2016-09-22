@@ -13,15 +13,15 @@ public class OnholdAndOnholdPending {
 		this.driver = driver;
 	}
 
-	public void onhold_pending(){
+	public void onholdPending(){
 		onhold.clickSkipDownloadCc().click();		
 	}
 
-	public void click_upload_and_continue(){
+	public void clickUploadAndContinue(){
 		onhold.click_upload_and_continue().click();
 	}
 
-	public void upload_images(){
+	public void uploadImages(){
 		((JavascriptExecutor)driver).executeScript("document.getElementsByName('CCF')[0].style.display=''");
 		((JavascriptExecutor)driver).executeScript("document.getElementsByName('CCB')[0].style.display=''");
 		((JavascriptExecutor)driver).executeScript("document.getElementsByName('IDF')[0].style.display=''");

@@ -44,7 +44,7 @@ public class Page2 {
 		clickReserveNow();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 3);
-			wait.until(visibilityOf(step3.CTAstep3()));
+			wait.until(visibilityOf(step3.cta_step3()));
 		} catch (Exception e) {
 			if (driver.getCurrentUrl().contains("reservation/showRooms")) {
 				clickReserveNow();

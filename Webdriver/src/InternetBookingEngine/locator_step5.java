@@ -20,9 +20,16 @@ public class locator_step5 {
 	// Elements
 	@FindBy(xpath = "html/body/div[3]/h2/strong")
 	private WebElement introCpage;
+	
+	@FindBy(xpath = "html/body/div[3]/h3")
+	private WebElement getCeIntro;
 
 	// Get Element Locator
 	public WebElement introCpage() {
 		return wait.until(visibilityOf(introCpage));
+	}
+	
+	public WebElement getCeIntro() {
+		return wait.until(visibilityOf(getCeIntro));
 	}
 }

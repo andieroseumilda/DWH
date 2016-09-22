@@ -20,7 +20,7 @@ public class locator_step3 {
 	private WebElement CTAstep3;
 
 	// Get Element
-	public WebElement CTAstep3() {
+	public WebElement cta_step3() {
 		return wait.until(elementToBeClickable(CTAstep3));
 	}
 }

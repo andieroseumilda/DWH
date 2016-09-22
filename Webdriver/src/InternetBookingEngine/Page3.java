@@ -11,7 +11,7 @@ public class Page3 {
 	}
 
 	public void clickGuestDetailsStep3() {
-		step3.CTAstep3().click();	
+		step3.cta_step3().click();	
 	}
 
 

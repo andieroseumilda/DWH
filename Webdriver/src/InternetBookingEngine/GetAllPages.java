@@ -41,10 +41,10 @@ public class GetAllPages {
 			if(!ccOwner){
 				onhold_modal.btnCcFraudModal().click();
 				if(upload_image){
-					onhold.upload_images();
-					onhold.click_upload_and_continue();
+					onhold.uploadImages();;
+					onhold.clickUploadAndContinue();;
 				}else{
-					onhold.onhold_pending();
+					onhold.onholdPending();
 
 				}
 			}
