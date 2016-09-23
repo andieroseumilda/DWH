@@ -52,7 +52,7 @@ public class Page4 {
 
 		switch (payment_settings) {
 		case "DWH":
-			firstName = "Andie";
+			firstName = "Test";
 			break;
 		case "HPP":
 			firstName = "HPP";
@@ -66,7 +66,7 @@ public class Page4 {
 	private String get_lastName(String payment_settings) {
 		switch (payment_settings) {
 		case "DWH":
-			lastName = "Andie";
+			lastName = "Reservation";
 			break;
 		case "HPP":
 			lastName = "HPP";

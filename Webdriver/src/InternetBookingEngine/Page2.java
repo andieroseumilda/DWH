@@ -33,7 +33,7 @@ public class Page2 {
 			}else if(room_name == "Full Ref"){
 				room_type = select_room.nightly_full_ref_fullCharge();
 			}else if(room_name == "Full Nonref"){
-				room_type = select_room.nightly_partial_nonref_fullcharge();
+				room_type = select_room.nightly_full_nonref_notAllowed();
 			}else{
 				System.err.println(" No rooms available");
 			}
