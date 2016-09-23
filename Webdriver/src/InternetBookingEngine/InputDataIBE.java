@@ -34,26 +34,26 @@ public class InputDataIBE {
 		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Partial Nonref", 2, true, false);
 	}
 	
-	@Test
-	public void bookingEngine_DWH_Full_Ref() throws MalformedURLException{
-		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Ref", 2, true, false);
-	}
-	
-	@Test
-	public void bookingEngine_DWH_Full_Nonref() throws MalformedURLException {
-		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, true, false);
-	}
-	
-	@Test
-	public void bookingEngine_DWH_Full_Nonref_Onhold() throws MalformedURLException {
-		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, true, true);
-	}
-	
-	@Test
-	public void bookingEngine_DWH_Full_Nonref_Onhold_pending() throws MalformedURLException {
-		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, true, false);
-	}
-	
+//	@Test
+//	public void bookingEngine_DWH_Full_Ref() throws MalformedURLException{
+//		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Ref", 2, true, false);
+//	}
+//	
+//	@Test
+//	public void bookingEngine_DWH_Full_Nonref() throws MalformedURLException {
+//		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, true, false);
+//	}
+//	
+//	@Test
+//	public void bookingEngine_DWH_Full_Nonref_Onhold() throws MalformedURLException {
+//		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, false, true);
+//	}
+//	
+//	@Test
+//	public void bookingEngine_DWH_Full_Nonref_Onhold_pending() throws MalformedURLException {
+//		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, false, false);
+//	}
+//	
 	
 	@AfterMethod
 	public void teardown() {
