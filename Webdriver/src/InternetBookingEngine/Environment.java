@@ -15,7 +15,7 @@ public class Environment {
 	private String environment_uat = "http://uat-";
 	private String base_url = "reservations.directwithhotels.com/reservation/";
 	private int dwh_web_page = 19130; //19130
-	private int hpp_web_page = 17371;
+	private int hpp_web_page = 19152; //17371
 	private String page1 = "selectDates/";
 	private String page2 = "showRooms/";
 	private Calendar now;

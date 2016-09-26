@@ -36,16 +36,17 @@ public class GetAllPages {
 		page3.clickGuestDetailsStep3();
 		page4.paymentPage(payment_settings, ccOwner);
 
+		if(payment_settings == "DWH"){
+			if(room_name == "Full Ref" || room_name == "Full Nonref" ){
+				if(!ccOwner){
+					onhold_modal.btnCcFraudModal().click();
+					if(upload_image){
+						onhold.uploadImages();;
+						onhold.clickUploadAndContinue();;
+					}else{
+						onhold.onholdPending();
 
-		if(room_name == "Full Ref" || room_name == "Full Nonref" ){
-			if(!ccOwner){
-				onhold_modal.btnCcFraudModal().click();
-				if(upload_image){
-					onhold.uploadImages();;
-					onhold.clickUploadAndContinue();;
-				}else{
-					onhold.onholdPending();
-
+					}
 				}
 			}
 		}

@@ -17,6 +17,7 @@ public class SelectRatePlanAndRooms {
 		}
 
 		// Element Locators
+		/*         DWH		 */
 		@FindBy(id = "room_22442_10433_0")
 		private WebElement nightly_partial_nonref_fullCharge; //Nightly:Partial Nonref - Full chargeNightly:Partial Nonref - Full charge
 	
@@ -26,9 +27,28 @@ public class SelectRatePlanAndRooms {
 		@FindBy(id = "room_22444_10434_0")
 		private WebElement nightly_full_nonref_notAllowed; //Nightly:Full NonRef - Not Allowed
 		
+		/*         HPP		 */
+		@FindBy(id = "room_22574_10468_0")
+		private WebElement hpp_nightly_partial_ref_fullCharge; //Nightly:Partial Nonref - Full chargeNightly:Partial Nonref - Full charge
+	
+		@FindBy(id = "room_22575_10469_2")
+		private WebElement hpp_nightly_partial_nonref_notAllowed; //Nightly:Partial Nonref - Full chargeNightly:Partial Nonref - Full charge
+	
+		@FindBy(id = "room_22572_10468_0")
+		private WebElement hpp_nightly_full_ref_fullCharge; //Nightly:Full Ref - Full Charge
+		
+		@FindBy(id = "room_22573_10469_0")
+		private WebElement hpp_nightly_full_nonref_notAllowed; //Nightly:Full NonRef - Not Allowed
+
+		@FindBy(id = "room_22571_10468_0")
+		private WebElement hpp_upon_arrival; //Nightly:Partial Nonref - Full chargeNightly:Partial Nonref - Full charge
+	
+		
+		
 		
 		
 		// Get Element Locators
+		/*         DWH		 */
 		public WebElement nightly_partial_nonref_fullcharge() {
 			return wait.until(ExpectedConditions.visibilityOf(nightly_partial_nonref_fullCharge));
 		}
@@ -41,8 +61,26 @@ public class SelectRatePlanAndRooms {
 			return wait.until(ExpectedConditions.visibilityOf(nightly_full_nonref_notAllowed));
 		}
 		
-
-
+		/*         HPP		 */
+		public WebElement hpp_nightly_partial_ref_fullCharge() {
+			return wait.until(ExpectedConditions.visibilityOf(hpp_nightly_partial_ref_fullCharge));
+		}
+		
+		public WebElement hpp_nightly_partial_nonref_notAllowed() {
+			return wait.until(ExpectedConditions.visibilityOf(hpp_nightly_partial_nonref_notAllowed));
+		}
+		
+		public WebElement hpp_nightly_full_ref_fullCharge() {
+			return wait.until(ExpectedConditions.visibilityOf(hpp_nightly_full_ref_fullCharge));
+		}
+		
+		public WebElement hpp_nightly_full_nonref_notAllowed() {
+			return wait.until(ExpectedConditions.visibilityOf(hpp_nightly_full_nonref_notAllowed));
+		}
+		
+		public WebElement hpp_upon_arrival() {
+			return wait.until(ExpectedConditions.visibilityOf(hpp_upon_arrival));
+		}
 	}
 
 

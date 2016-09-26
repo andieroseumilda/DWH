@@ -37,7 +37,23 @@ public class Page2 {
 			}else{
 				System.err.println(" No rooms available");
 			}
+		}else if (payment_settings=="HPP"){
+			if(room_name == "Partial Nonref"){
+				room_type = select_room.hpp_nightly_partial_nonref_notAllowed();
+			}else if(room_name == "Partial Ref"){
+				room_type = select_room.hpp_nightly_partial_ref_fullCharge();
+			}else if(room_name == "Full Ref"){
+				room_type = select_room.hpp_nightly_full_ref_fullCharge();
+			}else if(room_name == "Full Nonref"){
+				room_type = select_room.hpp_nightly_full_nonref_notAllowed();
+			}else{
+				room_type = select_room.hpp_upon_arrival();
+			}
+		}else{
+			System.out.println("No payment processor");
 		}
+
+
 
 		Select room = new Select(room_type);
 		room.selectByIndex(no_of_rooms);

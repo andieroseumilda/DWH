@@ -21,19 +21,20 @@ public class InputDataIBE {
 		driver = browser.firefoxDriver();
 		dwhIbe = new GetAllPages(driver);
 		env = new Environment(driver);
-		env.openIbe(test_environment, "DWH" , start_from_this_page);
+//		env.openIbe(test_environment, "DWH", start_from_this_page);
+		env.openIbe(test_environment, "HPP", start_from_this_page);
 	}	
 	
 	/*
 	Parameters for creating a reservation in order:
-	environment, payment_processor, step, prepayment, no. of rooms, ccowner, upload_image 
+	environment, payment_settings, step, prepayment, no. of rooms, ccowner, upload_image 
 	 */
 	
-	@Test
-	public void bookingEngine_DWH_Partial_NonRef() throws MalformedURLException {
-		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Partial Nonref", 2, true, false);
-	}
-	
+//	@Test
+//	public void bookingEngine_DWH_Partial_NonRef() throws MalformedURLException {
+//		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Partial Nonref", 2, true, false);
+//	}
+//	
 //	@Test
 //	public void bookingEngine_DWH_Full_Ref() throws MalformedURLException{
 //		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Ref", 2, true, false);
@@ -53,7 +54,32 @@ public class InputDataIBE {
 //	public void bookingEngine_DWH_Full_Nonref_Onhold_pending() throws MalformedURLException {
 //		dwhIbe.makeReservation(test_environment, "DWH", start_from_this_page , "Full Nonref", 2, false, false);
 //	}
-//	
+
+	@Test
+	public void bookingEngine_HPP_Partial_NonRef() throws MalformedURLException {
+		dwhIbe.makeReservation(test_environment, "HPP", start_from_this_page , "Partial Nonref", 2, true, false);
+	}
+	
+	@Test
+	public void bookingEngine_HPP_Partial_Ref() throws MalformedURLException {
+		dwhIbe.makeReservation(test_environment, "HPP", start_from_this_page , "Partial Ref", 2, true, false);
+	}
+	
+	@Test
+	public void bookingEngine_HPP_Full_Ref() throws MalformedURLException {
+		dwhIbe.makeReservation(test_environment, "HPP", start_from_this_page , "Full Ref", 2, true, false);
+	}
+	
+	@Test
+	public void bookingEngine_HPP_Full_NonRef() throws MalformedURLException {
+		dwhIbe.makeReservation(test_environment, "HPP", start_from_this_page , "Full Nonref", 2, true, false);
+	}
+	
+	@Test
+	public void bookingEngine_HPP_Upon_Arrival() throws MalformedURLException {
+		dwhIbe.makeReservation(test_environment, "HPP", start_from_this_page , "Upon Arrival", 2, true, false);
+	}
+	
 	
 	@AfterMethod
 	public void teardown() {
