@@ -1,11 +1,15 @@
 package InternetBookingEngine;
 
+import java.io.FileWriter;
+import java.util.TreeMap;
+import java.util.Map;
+import java.io.IOException;
 import java.util.*;
-
 import org.openqa.selenium.WebDriver;
 
 public class Page5 {
 
+	private String csvFile = "E:\\1\\eclipse-jee-luna-SR2-win32\\eclipse\\EclipseCsfFile\\TestReservation2.csv";
 	private locator_step5 step5;
 	private String intro;
 	private String label_cnumber;
@@ -52,9 +56,10 @@ public class Page5 {
 		step5 = new locator_step5(driver);
 	}
 
-	public void confirmPage() {
+	public void confirmPage() throws IOException {
 		intro = step5.introCpage().getText();
 		System.out.println(intro);
+
 
 		/* Label */
 		label_cnumber = step5.label_cnumber().getText();
@@ -76,7 +81,7 @@ public class Page5 {
 		label_total_reservation_cost = step5.label_total_reservation_cost().getText();
 		label_prepayment_paid = step5.label_prepayment_paid().getText();
 		label_payable_at_the_hotel = step5.label_payable_at_the_hotel().getText();
-		
+
 		/* Guest Information*/
 		confirmation_number = step5.confirmation_number().getText();
 		transact_id = step5.transaction_id().getText();
@@ -98,10 +103,14 @@ public class Page5 {
 		prepayment_paid = step5.prepayment_paid().getText();
 		payable_at_the_hotel = step5.payable_at_the_hotel().getText();
 		disclaimer = step5.label_disclaimer().getText();
+		/*
+		 * Conditions		
+		 */
+
+		ArrayList<HashMap<String, String>> myList = new ArrayList<HashMap<String, String>>();
 		
 		
 		HashMap<String, String> guestData = new HashMap<String, String>();
-		
 		guestData.put(label_cnumber, confirmation_number);
 		guestData.put(label_transaction_id, transact_id);
 		guestData.put(label_guest_name, guest_name);
@@ -121,11 +130,95 @@ public class Page5 {
 		guestData.put(label_total_reservation_cost, total_reservation_cost);
 		guestData.put(label_prepayment_paid, prepayment_paid);
 		guestData.put(label_payable_at_the_hotel, payable_at_the_hotel);
+		myList.add(guestData);
+
+		FileWriter writer;
+		writer = new FileWriter(csvFile);
 		
-		for(String guestLabel: guestData.keySet()){
-			System.out.println(guestLabel + " : "+ " " +guestData.get(guestLabel));
+		for(int i = 0; i < myList.size(); i++){
+			writer.write(myList.get(i).get(label_cnumber).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_transaction_id).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_guest_name).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_email_add).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_mobile_no).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_country).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_name_of_card_owner).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_card_number).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_credit_card_expiry).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_reservation_made_on).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_reservation_details).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_estimated_of_arrival).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_check_in).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_check_out).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_room_cost).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_taxes).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_total_reservation_cost).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_prepayment_paid).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(label_payable_at_the_hotel).toString());
+			writer.write(",");
+			writer.write("\r\n");
 		}
 		
+		for(int i = 0; i < myList.size(); i++){
+			writer.write(myList.get(i).get(confirmation_number).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(transact_id).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(guest_name).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(email_add).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(mobile_no).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(guest_country).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(name_of_card_owner).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(credit_card_number).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(credit_card_expiry).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(reservation_made_on).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(guest_reservation_details).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(estimated_of_arrival).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(guest_check_in).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(guest_check_out).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(room_cost).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(taxes).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(total_reservation_cost).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(prepayment_paid).toString());
+			writer.write(",");
+			writer.write(myList.get(i).get(payable_at_the_hotel).toString());
+			writer.write(",");
+		}
 		System.out.println(disclaimer);
+				writer.flush();
+				writer.close();
 	}
 }
