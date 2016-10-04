@@ -1,17 +1,13 @@
 package InternetBookingEngine;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+
 import org.openqa.selenium.WebDriver;
 
 public class Page5 {
 
-
-	final String regex = "\"[^\"]*\"|[^,]+";
-	final String subst = "";
 	private String csvFile = "E:\\1\\eclipse-jee-luna-SR2-win32\\eclipse\\EclipseCsfFile\\TestReservation3.csv";
 	private locator_step5 step5;
 	private String intro;
@@ -54,7 +50,8 @@ public class Page5 {
 	private String prepayment_paid;
 	private String payable_at_the_hotel;
 	private String disclaimer;
-
+	
+	
 	public Page5(WebDriver driver) {
 		step5 = new locator_step5(driver);
 	}
@@ -62,7 +59,6 @@ public class Page5 {
 	public void confirmPage() throws IOException {
 		intro = step5.introCpage().getText();
 		System.out.println(intro);
-
 
 		/* Label */
 		label_cnumber = step5.label_cnumber().getText();
@@ -109,80 +105,183 @@ public class Page5 {
 		/*
 		 * Conditions		
 		 */
+		ArrayList<HashMap<Integer, String>> myListv1 = new ArrayList<HashMap<Integer, String>>();
+		HashMap<Integer, String> listOfLabel = new HashMap<Integer, String>(); 
 
-		ArrayList<HashMap<String, String>> myList = new ArrayList<HashMap<String, String>>();
+		listOfLabel.put(0, label_cnumber);
+		listOfLabel.put(1, label_transaction_id);
+		listOfLabel.put(2, label_guest_name);
+		listOfLabel.put(3, label_email_add);
+		listOfLabel.put(4, label_mobile_no);
+		listOfLabel.put(5, label_country);
+		listOfLabel.put(6, label_name_of_card_owner);
+		listOfLabel.put(7, label_card_number);
+		listOfLabel.put(8, label_credit_card_expiry);
+		listOfLabel.put(9, label_reservation_made_on);
+		listOfLabel.put(10, label_reservation_details);
+		listOfLabel.put(11, label_estimated_of_arrival);
+		listOfLabel.put(12, label_check_in);
+		listOfLabel.put(13, label_check_out);
+		listOfLabel.put(14, label_room_cost);
+		listOfLabel.put(15, label_taxes);
+		listOfLabel.put(16, label_total_reservation_cost);
+		listOfLabel.put(17, label_prepayment_paid);
+		listOfLabel.put(18, label_payable_at_the_hotel);
+		myListv1.add(listOfLabel);
+		
+		ArrayList<HashMap<Integer, String>> myListv2 = new ArrayList<HashMap<Integer, String>>();
 
-		HashMap<String, String> guestData = new HashMap<String, String>();
-		guestData.put(label_cnumber, confirmation_number);
-		guestData.put(label_transaction_id, transact_id);
-		guestData.put(label_guest_name, guest_name);
-		guestData.put(label_email_add, email_add);
-		guestData.put(label_mobile_no, mobile_no);
-		guestData.put(label_country, guest_country);
-		guestData.put(label_name_of_card_owner, name_of_card_owner);
-		guestData.put(label_card_number, credit_card_number);
-		guestData.put(label_credit_card_expiry, credit_card_expiry);
-		guestData.put(label_reservation_made_on, reservation_made_on);
-		guestData.put(label_reservation_details, guest_reservation_details);
-		guestData.put(label_estimated_of_arrival, estimated_of_arrival);
-		guestData.put(label_check_in, guest_check_in);
-		guestData.put(label_check_out, guest_check_out);
-		guestData.put(label_room_cost, room_cost);
-		guestData.put(label_taxes, taxes);
-		guestData.put(label_total_reservation_cost, total_reservation_cost);
-		guestData.put(label_prepayment_paid, prepayment_paid);
-		guestData.put(label_payable_at_the_hotel, payable_at_the_hotel);
-		myList.add(guestData);
-		System.out.println(myList);
-		System.out.println(guestData);
+		HashMap<Integer, String> guestData = new HashMap<Integer, String>(); 
+		
+		guestData.put(0, confirmation_number);
+		guestData.put(1, transact_id);
+		guestData.put(2, guest_name);
+		guestData.put(3, email_add);
+		guestData.put(4, mobile_no);
+		guestData.put(5, guest_country);
+		guestData.put(6, name_of_card_owner);
+		guestData.put(7, credit_card_number);
+		guestData.put(8, credit_card_expiry);
+		guestData.put(9, reservation_made_on);
+		guestData.put(10, guest_reservation_details);
+		guestData.put(11, estimated_of_arrival);
+		guestData.put(12, guest_check_in);
+		guestData.put(13, guest_check_out);
+		guestData.put(14, room_cost);
+		guestData.put(15, taxes);
+		guestData.put(16, total_reservation_cost);
+		guestData.put(17, prepayment_paid);
+		guestData.put(18, payable_at_the_hotel);
+		myListv2.add(guestData);
+
 
 		FileWriter writer;
 		writer = new FileWriter(csvFile);
 		
-		for(int i = 0; i < myList.size(); i++){
-			writer.write(myList.get(i).get(label_cnumber).toString());
+		
+		for(int i = 0; i < myListv1.size(); i++){
+			writer.write(myListv1.get(i).get(0).toString());
 			writer.write(",");
-//			writer.write(myList.get(i).get(confirmation_number).toString());
-//			writer.write(",");
-//			System.out.println(i);
-//			writer.write(myList.get(i).get(label_transaction_id).toString());
-//			writer.write(",");
-//			System.out.println(i);
-//			writer.write(myList.get(i).get(label_guest_name).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_email_add).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_mobile_no).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_country).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_name_of_card_owner).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_card_number).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_credit_card_expiry).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_reservation_made_on).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_reservation_details).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_estimated_of_arrival).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_check_in).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_check_out).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_room_cost).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_taxes).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_total_reservation_cost).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_prepayment_paid).toString());
-//			writer.write(",");
-//			writer.write(myList.get(i).get(label_payable_at_the_hotel).toString());
-//			writer.write(",");
-//			writer.write("\r\n");
+			writer.write(myListv1.get(i).get(1).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(2).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(3).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(4).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(5).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(6).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(7).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(8).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(9).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(10).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(11).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(12).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(13).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(14).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(15).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(16).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(17).toString());
+			writer.write(",");
+			writer.write(myListv1.get(i).get(18).toString());
+			writer.write(",");
+			writer.write("\r\n");
+		}
+		
+		
+	
+		for(int i = 0; i < myListv2.size(); i++){
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(0).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(1).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(2).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(3).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(4).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(5).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(6).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(7).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(8).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(9).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(10).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(11).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(12).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(13).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(14).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(15).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(16).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(17).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.append("\"");
+			writer.append(myListv2.get(i).get(18).toString());
+			writer.append("\"");
+			writer.write(",");
+			writer.write("\r\n");
+
 		}
 		
 
