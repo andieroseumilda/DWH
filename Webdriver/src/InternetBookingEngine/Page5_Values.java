@@ -1,11 +1,14 @@
 package InternetBookingEngine;
 
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
 
-public class Page5_Values {
+
+public class Page5_Values{
+
 	private locator_step5 step5;
 	private String confirmation_number;
 	private String transact_id;
@@ -27,12 +30,12 @@ public class Page5_Values {
 	private String prepayment_paid;
 	private String payable_at_the_hotel;
 	private Page5_Reservation_details get_csvFileName;
-	
-	public Page5_Values(WebDriver driver) {
+
+
+	public Page5_Values(WebDriver driver){ 
 		step5 = new locator_step5(driver);
 		get_csvFileName = new Page5_Reservation_details();
-		}
-	
+	}
 	public ArrayList<HashMap<Integer, String>> get_confirmPage_values(String payment_settings, String room_name, boolean cc_owner) {
 		/* Guest Information*/
 		confirmation_number = step5.confirmation_number().getText();
@@ -54,10 +57,7 @@ public class Page5_Values {
 		total_reservation_cost = step5.total_reservation_cost().getText();
 		prepayment_paid = step5.prepayment_paid().getText();
 		payable_at_the_hotel = step5.payable_at_the_hotel().getText();
-		
-		
-		
-
+	
 		ArrayList<HashMap<Integer, String>> myListv2 = new ArrayList<HashMap<Integer, String>>();
 
 		HashMap<Integer, String> guestData = new HashMap<Integer, String>(); 
@@ -84,7 +84,6 @@ public class Page5_Values {
 		guestData.put(19, prepayment_paid);
 		guestData.put(20, payable_at_the_hotel);
 		myListv2.add(guestData);
-		return myListv2;
-		
+		return myListv2;	
 	}
 }

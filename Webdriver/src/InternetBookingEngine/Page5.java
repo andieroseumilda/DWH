@@ -1,6 +1,7 @@
 package InternetBookingEngine;
 
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -12,12 +13,12 @@ public class Page5 {
 	private locator_step5 step5;
 	private String intro;
 	private String disclaimer;
-	
+
 	private FileWriter writer;
 	private Page5_Labels labels;
 	private Page5_Values values;
 	private Page5_Reservation_details get_csvFileName;
-	
+
 	public Page5(WebDriver driver) {
 		step5 = new locator_step5(driver);
 		labels = new Page5_Labels(driver);
@@ -31,7 +32,6 @@ public class Page5 {
 		disclaimer = step5.label_disclaimer().getText();
 		System.out.println(disclaimer);
 
-	
 		/*
 		 * Conditions		
 		 */
@@ -40,80 +40,37 @@ public class Page5 {
 
 		writer = null;	
 
+		File fileExist = new File(get_csvFileName.setCsvFile());
+
 		try{	
-			
-				writer = new FileWriter(get_csvFileName.setCsvFile(), true);
-			
-			for(int i = 0; i < myListv1.size(); i++){
-				writer.append(myListv1.get(i).get(0).toString().concat(","));
-				writer.append(myListv1.get(i).get(1).toString().concat(","));
-				writer.append(myListv1.get(i).get(2).toString().concat(","));
-				writer.append(myListv1.get(i).get(3).toString().concat(","));
-				writer.append(myListv1.get(i).get(4).toString().concat(","));
-				writer.append(myListv1.get(i).get(5).toString().concat(","));
-				writer.append(myListv1.get(i).get(6).toString().concat(","));
-				writer.append(myListv1.get(i).get(7).toString().concat(","));
-				writer.append(myListv1.get(i).get(8).toString().concat(","));
-				writer.append(myListv1.get(i).get(9).toString().concat(","));
-				writer.append(myListv1.get(i).get(10).toString().concat(","));
-				writer.append(myListv1.get(i).get(11).toString().concat(","));
-				writer.append(myListv1.get(i).get(12).toString().concat(","));
-				writer.append(myListv1.get(i).get(13).toString().concat(","));
-				writer.append(myListv1.get(i).get(14).toString().concat(","));
-				writer.append(myListv1.get(i).get(15).toString().concat(","));
-				writer.append(myListv1.get(i).get(16).toString().concat(","));
-				writer.append(myListv1.get(i).get(17).toString().concat(","));
-				writer.append(myListv1.get(i).get(18).toString().concat(","));
-				writer.append(myListv1.get(i).get(19).toString().concat(","));
-				writer.append("\r\n");
-			}
-
+			if(!fileExist.exists()){
+				writer = new FileWriter(get_csvFileName.setCsvFile(),true);
+				for(int i = 0; i < myListv1.size(); i++){
+					for(int j = 0; j < 20; j++){
+						writer.append(myListv1.get(i).get(j).toString().concat(","));	
+					}
+					writer.append("\r\n");
+				}
 				for(int i = 0; i < myListv2.size(); i++){
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(0).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(1).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(2).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(3).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(4).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(5).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(6).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(7).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(8).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(9).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(10).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(11).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(12).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(13).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(14).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(15).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(16).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(17).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(18).toString().concat("\","));
-				writer.append("\"");
-				writer.append(myListv2.get(i).get(19).toString().concat("\","));
-				writer.write("\r\n");
+					for(int j = 0; j < 20; j++){
+						writer.append("\"");
+						writer.append(myListv2.get(i).get(j).toString().concat("\","));	
+					}
+					writer.write("\r\n");
+				}
 
+			} else {
+				writer = new FileWriter(get_csvFileName.setCsvFile(), true);
+				for(int i = 0; i < myListv2.size(); i++){
+					for(int j = 0; j < 20; j++){
+						writer.append("\"");
+						writer.append(myListv2.get(i).get(j).toString().concat("\","));	
+					}
+					writer.write("\r\n");
+				}
 			}
-		}
-		catch(Exception e){
+
+		} catch(Exception e){
 			e.printStackTrace();
 		}
 

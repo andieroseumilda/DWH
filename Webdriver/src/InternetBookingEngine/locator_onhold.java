@@ -16,7 +16,7 @@ public class locator_onhold {
 	
 	public locator_onhold(WebDriver driver){
 		PageFactory.initElements(driver, this);
-		this.wait = new WebDriverWait(driver, 50);
+		this.wait = new WebDriverWait(driver, 80);
 	}
 	
 	// Element Locations

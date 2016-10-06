@@ -1,12 +1,15 @@
 package InternetBookingEngine;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
+
 import org.openqa.selenium.WebDriver;
 
 public class GetAllPages {
 
 	// Start WebDriver
-
+	
+	private Environment env;
 	private Page1 page1;
 	private Page2 page2;
 	private Page3 page3;
@@ -17,7 +20,8 @@ public class GetAllPages {
 
 
 	public GetAllPages(WebDriver driver) throws MalformedURLException{
-
+		
+		env = new Environment(driver);
 		page1 = new Page1(driver);
 		page2 = new Page2(driver);
 		page3 = new Page3(driver);
@@ -27,7 +31,8 @@ public class GetAllPages {
 		onhold_modal = new locator_onhold(driver);
 	}
 
-	public void makeReservation(String test_server, String payment_settings, int step, String room_name, int no_of_rooms, boolean ccOwner, boolean upload_image){
+	public void makeReservation(String test_server, String payment_settings, int step, String room_name, int no_of_rooms, boolean ccOwner, boolean upload_image) throws IOException{
+		env.openIbe(test_server, payment_settings, step);
 		if (step==1) {
 			page1.selectStayDates();
 		}
@@ -41,7 +46,7 @@ public class GetAllPages {
 				if(!ccOwner){
 					onhold_modal.btnCcFraudModal().click();
 					if(upload_image){
-						onhold.uploadImages();;
+						onhold.uploadImages();
 						onhold.clickUploadAndContinue();;
 					}else{
 						onhold.onholdPending();
@@ -50,7 +55,8 @@ public class GetAllPages {
 				}
 			}
 		}
-		page5.confirmPage();
+		
+		page5.confirmPage(payment_settings, room_name, ccOwner);
 
 	}
 
