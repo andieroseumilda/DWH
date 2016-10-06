@@ -42,9 +42,8 @@ public class Page5 {
 
 		try{	
 			
-			if(get_csvFileName.setCsvFile().isEmpty()){
 				writer = new FileWriter(get_csvFileName.setCsvFile(), true);
-			}
+			
 			for(int i = 0; i < myListv1.size(); i++){
 				writer.append(myListv1.get(i).get(0).toString().concat(","));
 				writer.append(myListv1.get(i).get(1).toString().concat(","));
