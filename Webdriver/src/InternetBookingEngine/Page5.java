@@ -18,7 +18,10 @@ public class Page5 {
 	private Page5_Labels labels;
 	private Page5_Values values;
 	private Page5_Reservation_details get_csvFileName;
-
+	private ArrayList<HashMap<Integer, String>> myListv1;
+	private ArrayList<HashMap<Integer, String>> myListv2;
+	private File fileExist;
+	
 	public Page5(WebDriver driver) {
 		step5 = new locator_step5(driver);
 		labels = new Page5_Labels(driver);
@@ -27,58 +30,52 @@ public class Page5 {
 	}
 
 	public void confirmPage(String payment_settings, String room_name, boolean cc_owner) throws IOException {
+		myListv1 = labels.get_confirmPage_labels();
+		fileExist = new File(get_csvFileName.setCsvFile());
+		writer = null;	
+		
 		intro = step5.introCpage().getText();
 		System.out.println(intro);
 		disclaimer = step5.label_disclaimer().getText();
 		System.out.println(disclaimer);
-
 		/*
 		 * Conditions		
 		 */
-		ArrayList<HashMap<Integer, String>> myListv1 = labels.get_confirmPage_labels();
-		ArrayList<HashMap<Integer, String>> myListv2 = values.get_confirmPage_values(payment_settings, room_name, cc_owner);
-
-		writer = null;	
-
-		File fileExist = new File(get_csvFileName.setCsvFile());
 
 		try{	
 			if(!fileExist.exists()){
 				writer = new FileWriter(get_csvFileName.setCsvFile(),true);
-				for(int i = 0; i < myListv1.size(); i++){
-					for(int j = 0; j < 20; j++){
-						writer.append(myListv1.get(i).get(j).toString().concat(","));	
+				for(int cell_row = 0; cell_row < myListv1.size(); cell_row++){
+					for(int cell_column = 0; cell_column < 20; cell_column++){
+						writer.append(myListv1.get(cell_row).get(cell_column).toString().concat(","));	
 					}
 					writer.append("\r\n");
 				}
-				for(int i = 0; i < myListv2.size(); i++){
-					for(int j = 0; j < 20; j++){
-						writer.append("\"");
-						writer.append(myListv2.get(i).get(j).toString().concat("\","));	
-					}
-					writer.write("\r\n");
-				}
+				loopValues(payment_settings, room_name, cc_owner);
 
 			} else {
 				writer = new FileWriter(get_csvFileName.setCsvFile(), true);
-				for(int i = 0; i < myListv2.size(); i++){
-					for(int j = 0; j < 20; j++){
-						writer.append("\"");
-						writer.append(myListv2.get(i).get(j).toString().concat("\","));	
-					}
-					writer.write("\r\n");
-				}
+				loopValues(payment_settings, room_name, cc_owner);
 			}
 
 		} catch(Exception e){
 			e.printStackTrace();
 		}
 
-
-
 		System.out.println(disclaimer);
 		writer.flush();
 		writer.close();
+	}
+	
+	private void loopValues(String payment_settings, String room_name, boolean cc_owner) throws IOException{
+		myListv2 = values.get_confirmPage_values(payment_settings, room_name, cc_owner);
+		for(int cell_row = 0; cell_row < myListv2.size(); cell_row++){
+			for(int cell_column = 0; cell_column < 20; cell_column++){
+				writer.append("\"");
+				writer.append(myListv2.get(cell_row).get(cell_column).toString().concat("\","));	
+			}
+			writer.write("\r\n");
+		}
 	}
 
 }
