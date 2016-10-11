@@ -29,14 +29,14 @@ public class Page5_Values{
 	private String total_reservation_cost;
 	private String prepayment_paid;
 	private String payable_at_the_hotel;
-	private Page5_Reservation_details get_csvFileName;
+	private Page5_Csv_Scenario get_csvFileName;
 
 
 	public Page5_Values(WebDriver driver){ 
 		step5 = new locator_step5(driver);
-		get_csvFileName = new Page5_Reservation_details();
+		get_csvFileName = new Page5_Csv_Scenario();
 	}
-	public ArrayList<HashMap<Integer, String>> get_confirmPage_values(String payment_settings, String room_name, boolean cc_owner) {
+	public ArrayList<HashMap<Integer, String>> get_confirmPage_values(String payment_settings, String room_name, boolean cc_owner, int cancel) {
 		/* Guest Information*/
 		confirmation_number = step5.confirmation_number().getText();
 		transact_id = step5.transaction_id().getText();
@@ -55,15 +55,17 @@ public class Page5_Values{
 		room_cost = step5.room_cost().getText();
 		taxes = step5.taxes().getText();
 		total_reservation_cost = step5.total_reservation_cost().getText();
-		prepayment_paid = step5.prepayment_paid().getText();
-		payable_at_the_hotel = step5.payable_at_the_hotel().getText();
+		if(!(cancel==1)){
+			prepayment_paid = step5.prepayment_paid().getText();
+			payable_at_the_hotel = step5.payable_at_the_hotel().getText();		
+		}
 	
 		ArrayList<HashMap<Integer, String>> myListv2 = new ArrayList<HashMap<Integer, String>>();
 
 		HashMap<Integer, String> guestData = new HashMap<Integer, String>(); 
 
 		guestData.put(0, get_csvFileName.reservationMadeOn());
-		guestData.put(1, get_csvFileName.setPaymentName(payment_settings, room_name, cc_owner));
+		guestData.put(1, get_csvFileName.setPaymentName(payment_settings, room_name, cc_owner, cancel));
 		guestData.put(2, confirmation_number);
 		guestData.put(3, transact_id);
 		guestData.put(4, guest_name);

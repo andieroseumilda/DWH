@@ -6,23 +6,12 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class Page5_Reservation_details {
-	private String csvFile = "E:\\1\\eclipse-jee-luna-SR2-win32\\eclipse\\EclipseCsfFile\\";
-	private String fileName = "Test_Reservation";
-	private String extension = ".csv";
-	private String csvFileName;
+public class Page5_Csv_Scenario {
 	private String room_type;
 
 	private Calendar now;
 	private String get_time;
 	private DateFormat date_format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
-
-	public String setCsvFile(){	
-		csvFileName = csvFile + fileName + extension;
-		System.out.println(csvFileName);
-		return csvFileName;
-		
-	}
 	
 	public String reservationMadeOn(){
 		now = Calendar.getInstance();
@@ -32,10 +21,13 @@ public class Page5_Reservation_details {
 		return get_time;
 	}
 	
-	public String setPaymentName(String payment_settings, String room_name, boolean cc_owner){
+	public String setPaymentName(String payment_settings, String room_name, boolean cc_owner, int cancel){
 		if (payment_settings=="DWH"){
 			if(room_name == "Partial Nonref"){
 				room_type = "DWH_Partial_NonRef";
+				if(cancel==1){
+					room_type = "DWH_Partial_NonRef_Cancelled_Reservation";
+				}
 			}else if(room_name == "Full Ref"){
 				if(cc_owner){
 				room_type = "DWH_Full_Ref";

@@ -1,6 +1,7 @@
 package InternetBookingEngine;
 
 import java.util.*;
+
 import org.openqa.selenium.WebDriver;
 
 public class Page5_Labels {
@@ -30,7 +31,7 @@ public class Page5_Labels {
 		step5 = new locator_step5(driver);
 	}
 
-	public ArrayList<HashMap<Integer, String>> get_confirmPage_labels() {
+	public ArrayList<HashMap<Integer, String>> get_confirmPage_labels(int cancel) {
 
 		/* Label */
 		label_cnumber = step5.label_cnumber().getText();
@@ -47,11 +48,14 @@ public class Page5_Labels {
 		label_estimated_of_arrival = step5.label_estimated_of_arrival().getText();
 		label_check_in = step5.label_check_in().getText();
 		label_check_out = step5.label_check_out().getText();
-		label_room_cost = step5.label_room_cost().getText();
+		label_room_cost = step5.label_room_cost().getText();		
 		label_taxes = step5.label_taxes().getText();
 		label_total_reservation_cost = step5.label_total_reservation_cost().getText();
-		label_prepayment_paid = step5.label_prepayment_paid().getText();
-		label_payable_at_the_hotel = step5.label_payable_at_the_hotel().getText();
+		if(!(cancel==1)){
+			label_prepayment_paid = step5.label_prepayment_paid().getText();
+			label_payable_at_the_hotel = step5.label_payable_at_the_hotel().getText();
+		}
+		
 
 		 /* Conditions		
 		 */

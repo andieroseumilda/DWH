@@ -8,7 +8,7 @@ import org.openqa.selenium.WebDriver;
 public class GetAllPages {
 
 	// Start WebDriver
-	
+
 	private Environment env;
 	private Page1 page1;
 	private Page2 page2;
@@ -17,10 +17,11 @@ public class GetAllPages {
 	private Page5 page5;
 	private OnholdAndOnholdPending onhold;
 	private locator_onhold onhold_modal;
+	private CancelReservation cancelReservation;
 
 
 	public GetAllPages(WebDriver driver) throws MalformedURLException{
-		
+
 		env = new Environment(driver);
 		page1 = new Page1(driver);
 		page2 = new Page2(driver);
@@ -29,9 +30,10 @@ public class GetAllPages {
 		page5 = new Page5(driver);
 		onhold = new OnholdAndOnholdPending(driver);
 		onhold_modal = new locator_onhold(driver);
+		cancelReservation = new CancelReservation(driver);
 	}
 
-	public void makeReservation(String test_server, String payment_settings, int step, String room_name, int no_of_rooms, boolean ccOwner, boolean upload_image) throws IOException{
+	public void makeReservation(String test_server, String payment_settings, int step, String room_name, int no_of_rooms, boolean ccOwner, boolean upload_image, int cancel) throws IOException{
 		env.openIbe(test_server, payment_settings, step);
 		if (step==1) {
 			page1.selectStayDates();
@@ -55,8 +57,13 @@ public class GetAllPages {
 				}
 			}
 		}
-		
-		page5.confirmPage(payment_settings, room_name, ccOwner);
+
+		page5.confirmPage();
+			if(cancel==1){
+				cancelReservation.cancelReservation();				
+		}
+			page5.generateCsv(payment_settings, room_name, ccOwner, cancel);
+
 
 	}
 

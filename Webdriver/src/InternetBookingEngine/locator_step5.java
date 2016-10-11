@@ -26,74 +26,73 @@ public class locator_step5 {
 	private WebElement ce_intro;
 
 	/*	 Label	 */
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Confirmation Number')]")
 	private WebElement label_cnumber;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[2]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Transaction ID')]")
 	private WebElement label_transaction_id;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[3]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Guest Name')]")
 	private WebElement label_guest_name;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[4]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Email Address')]")
 	private WebElement label_email_add;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[5]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Mobile Number')]")
 	private WebElement label_mobile_no;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[6]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Country')]")
 	private WebElement label_country;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[7]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Name of Card Owner')]")
 	private WebElement label_name_of_card_owner;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[8]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Card Number:')]")
 	private WebElement label_card_number;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[9]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Credit Card Expiry')]")
 	private WebElement label_credit_card_expiry;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[10]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Reservation Made On')]")
 	private WebElement label_reservation_made_on;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[11]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Reservation Details')]")
 	private WebElement label_reservation_details;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[12]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Estimated Time of Arrival')]")
 	private WebElement label_estimated_of_arrival;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[13]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Check In')]")
 	private WebElement label_check_in;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[14]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Check Out')]")
 	private WebElement label_check_out;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[16]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Room Cost:')]")
 	private WebElement label_room_cost;
 	
-
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[17]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Taxes')]")
 	private WebElement label_taxes;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[18]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Total Reservation Cost:')]")
 	private WebElement label_total_reservation_cost;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[19]/td[1]/a")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Show details')]")
 	private WebElement click_show_details_link;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[21]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Prepayment - PAID:')]")
 	private WebElement label_prepayment_paid;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[22]/td[1]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Payable at the Hotel:')]")
 	private WebElement label_payable_at_the_hotel;
 	
 
@@ -101,76 +100,74 @@ public class locator_step5 {
 	private WebElement label_disclaimer;
 	
 	/*   Guest Reservation Details	 */
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[1]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Confirmation Number')]/following::td[1]")
 	private WebElement confirmation_number;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[2]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Transaction ID')]/following::td[1]")
 	private WebElement transaction_id;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[3]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Guest Name')]/following::td[1]")
 	private WebElement guest_name;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[4]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Email Address')]/following::td[1]")
 	private WebElement email_add;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[5]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Mobile Number')]/following::td[1]")
 	private WebElement mobile_no;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[6]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Country')]/following::td[1]")
 	private WebElement guest_country;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[7]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Name of Card Owner')]/following::td[1]")
 	private WebElement name_of_card_owner;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[8]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Card Number:')]/following::td[1]")
 	private WebElement credit_card_number;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[9]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Credit Card Expiry')]/following::td[1]")
 	private WebElement credit_card_expiry;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[10]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Reservation Made On')]/following::td[1]")
 	private WebElement reservation_made_on;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[11]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Reservation Details')]/following::td[1]")
 	private WebElement guest_reservation_details;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[12]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Estimated Time of Arrival')]/following::td[1]")
 	private WebElement estimated_of_arrival;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[13]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Check In')]/following::td[1]")
 	private WebElement guest_check_in;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[14]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Check Out')]/following::td[1]")
 	private WebElement guest_check_out;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[16]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Room Cost:')]/following::td[1]")
 	private WebElement room_cost;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[17]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Taxes')]/following::td[1]")
 	private WebElement taxes;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[18]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Total Reservation Cost:')]/following::td[1]")
 	private WebElement total_reservation_cost;
 	
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[21]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Prepayment - PAID:')]/following::td[1]")
 	private WebElement prepayment_paid;
 	
 
-	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/table/tbody/tr[22]/td[2]")
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Payable at the Hotel:')]/following::td[1]")
 	private WebElement payable_at_the_hotel;
 	
 
 	@FindBy(xpath = "html/body/div[3]/div[2]/div[2]/div[1]/p")
 	private WebElement disclaimer;
-
-
 	
 	// Get Element Locator
 	public WebElement introCpage() {
@@ -241,7 +238,7 @@ public class locator_step5 {
 	public WebElement label_room_cost() {
 		return wait.until(visibilityOf(label_room_cost));
 	}
-	
+		
 	public WebElement label_taxes() {
 		return wait.until(visibilityOf(label_taxes));
 	}
