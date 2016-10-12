@@ -5,7 +5,7 @@ import java.util.*;
 import org.openqa.selenium.WebDriver;
 
 public class Page5_Labels {
-	
+
 	private locator_step5 step5;
 	private String label_cnumber;
 	private String label_transaction_id;
@@ -24,14 +24,14 @@ public class Page5_Labels {
 	private String label_room_cost;
 	private String label_taxes;
 	private String label_total_reservation_cost;
-	private String label_prepayment_paid;
+	private String label_prepayment;
 	private String label_payable_at_the_hotel;
 
 	public Page5_Labels(WebDriver driver) {
 		step5 = new locator_step5(driver);
 	}
 
-	public ArrayList<HashMap<Integer, String>> get_confirmPage_labels(int cancel) {
+	public HashMap<Integer, String> get_confirmPage_labels(String payment_settings, String reservation_status) {
 
 		/* Label */
 		label_cnumber = step5.label_cnumber().getText();
@@ -51,15 +51,22 @@ public class Page5_Labels {
 		label_room_cost = step5.label_room_cost().getText();		
 		label_taxes = step5.label_taxes().getText();
 		label_total_reservation_cost = step5.label_total_reservation_cost().getText();
-		if(!(cancel==1)){
-			label_prepayment_paid = step5.label_prepayment_paid().getText();
-			label_payable_at_the_hotel = step5.label_payable_at_the_hotel().getText();
-		}
-		
 
-		 /* Conditions		
+		if(reservation_status=="Confirmed"){
+			if(payment_settings=="DWH"){
+				label_prepayment = step5.dwh_label_prepayment_paid().getText();
+			}else{
+				label_prepayment = step5.hpp_label_prepayment().getText(); 
+			}
+			label_payable_at_the_hotel = step5.label_payable_at_the_hotel().getText();
+		}else{
+			label_prepayment = "Prepayment - PAID:";
+			label_payable_at_the_hotel = "Payable at the Hotel:";
+		}
+
+
+		/* Conditions		
 		 */
-		ArrayList<HashMap<Integer, String>> myListv1 = new ArrayList<HashMap<Integer, String>>();
 		HashMap<Integer, String> listOfLabel = new HashMap<Integer, String>();
 
 		listOfLabel.put(0, "Date Created");
@@ -81,11 +88,11 @@ public class Page5_Labels {
 		listOfLabel.put(16, label_room_cost);
 		listOfLabel.put(17, label_taxes);
 		listOfLabel.put(18, label_total_reservation_cost);
-		listOfLabel.put(19, label_prepayment_paid);
+		listOfLabel.put(19, label_prepayment);
 		listOfLabel.put(20, label_payable_at_the_hotel);
-		myListv1.add(listOfLabel);
-		
-		return myListv1;
+
+
+		return listOfLabel;
 	}
 
 }

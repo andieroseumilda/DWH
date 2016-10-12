@@ -21,12 +21,13 @@ public class Page5_Csv_Scenario {
 		return get_time;
 	}
 	
-	public String setPaymentName(String payment_settings, String room_name, boolean cc_owner, int cancel){
+	public String setPaymentName(String payment_settings, String room_name, boolean cc_owner, String cancel){
 		if (payment_settings=="DWH"){
 			if(room_name == "Partial Nonref"){
-				room_type = "DWH_Partial_NonRef";
-				if(cancel==1){
+				if(cancel=="Cancel"){
 					room_type = "DWH_Partial_NonRef_Cancelled_Reservation";
+				}else{
+					room_type = "DWH_Partial_NonRef";
 				}
 			}else if(room_name == "Full Ref"){
 				if(cc_owner){

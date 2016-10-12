@@ -89,9 +89,12 @@ public class locator_step5 {
 	
 
 	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Prepayment - PAID:')]")
-	private WebElement label_prepayment_paid;
+	private WebElement dwh_label_prepayment_paid;
 	
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Prepayment:')]")
+	private WebElement hpp_label_prepayment;	
 
+	
 	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Payable at the Hotel:')]")
 	private WebElement label_payable_at_the_hotel;
 	
@@ -159,7 +162,10 @@ public class locator_step5 {
 	private WebElement total_reservation_cost;
 	
 	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Prepayment - PAID:')]/following::td[1]")
-	private WebElement prepayment_paid;
+	private WebElement dwh_prepayment_paid;
+	
+	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Prepayment:')]/following::td[1]")
+	private WebElement hpp_prepayment;
 	
 
 	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Payable at the Hotel:')]/following::td[1]")
@@ -251,8 +257,12 @@ public class locator_step5 {
 		return wait.until(visibilityOf(click_show_details_link));
 	}
 	
-	public WebElement label_prepayment_paid() {
-		return wait.until(visibilityOf(label_prepayment_paid));
+	public WebElement dwh_label_prepayment_paid() {
+		return wait.until(visibilityOf(dwh_label_prepayment_paid));
+	}
+	
+	public WebElement hpp_label_prepayment() {
+		return wait.until(visibilityOf(hpp_label_prepayment));
 	}
 	
 	public WebElement label_payable_at_the_hotel() {
@@ -333,8 +343,12 @@ public class locator_step5 {
 		return wait.until(visibilityOf(total_reservation_cost));
 	}
 	
-	public WebElement prepayment_paid() {
-		return wait.until(visibilityOf(prepayment_paid));
+	public WebElement dwh_prepayment_paid() {
+		return wait.until(visibilityOf(dwh_prepayment_paid));
+	}
+	
+	public WebElement hpp_prepayment() {
+		return wait.until(visibilityOf(hpp_prepayment));
 	}
 	
 	public WebElement payable_at_the_hotel() {

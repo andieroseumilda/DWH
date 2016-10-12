@@ -1,11 +1,8 @@
 package InternetBookingEngine;
 
-
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
-
 
 public class Page5_Values{
 
@@ -31,12 +28,11 @@ public class Page5_Values{
 	private String payable_at_the_hotel;
 	private Page5_Csv_Scenario get_csvFileName;
 
-
 	public Page5_Values(WebDriver driver){ 
 		step5 = new locator_step5(driver);
 		get_csvFileName = new Page5_Csv_Scenario();
 	}
-	public ArrayList<HashMap<Integer, String>> get_confirmPage_values(String payment_settings, String room_name, boolean cc_owner, int cancel) {
+	public HashMap<Integer, String> get_confirmPage_values(String payment_settings, String room_name, boolean cc_owner, String reservation_status) {
 		/* Guest Information*/
 		confirmation_number = step5.confirmation_number().getText();
 		transact_id = step5.transaction_id().getText();
@@ -55,37 +51,40 @@ public class Page5_Values{
 		room_cost = step5.room_cost().getText();
 		taxes = step5.taxes().getText();
 		total_reservation_cost = step5.total_reservation_cost().getText();
-		if(!(cancel==1)){
-			prepayment_paid = step5.prepayment_paid().getText();
+		if(reservation_status=="Confirmed"){
+			if(payment_settings=="DWH"){
+				prepayment_paid = step5.dwh_prepayment_paid().getText();	
+			}else{
+				prepayment_paid = step5.hpp_prepayment().getText();
+			}
 			payable_at_the_hotel = step5.payable_at_the_hotel().getText();		
+		} else{
+			prepayment_paid = " ";
+			payable_at_the_hotel = " ";
 		}
-	
-		ArrayList<HashMap<Integer, String>> myListv2 = new ArrayList<HashMap<Integer, String>>();
-
-		HashMap<Integer, String> guestData = new HashMap<Integer, String>(); 
-
-		guestData.put(0, get_csvFileName.reservationMadeOn());
-		guestData.put(1, get_csvFileName.setPaymentName(payment_settings, room_name, cc_owner, cancel));
-		guestData.put(2, confirmation_number);
-		guestData.put(3, transact_id);
-		guestData.put(4, guest_name);
-		guestData.put(5, email_add);
-		guestData.put(6, mobile_no);
-		guestData.put(7, guest_country);
-		guestData.put(8, name_of_card_owner);
-		guestData.put(9, credit_card_number);
-		guestData.put(10, credit_card_expiry);
-		guestData.put(11, reservation_made_on);
-		guestData.put(12, guest_reservation_details);
-		guestData.put(13, estimated_of_arrival);
-		guestData.put(14, guest_check_in);
-		guestData.put(15, guest_check_out);
-		guestData.put(16, room_cost);
-		guestData.put(17, taxes);
-		guestData.put(18, total_reservation_cost);
-		guestData.put(19, prepayment_paid);
-		guestData.put(20, payable_at_the_hotel);
-		myListv2.add(guestData);
-		return myListv2;	
+		
+		HashMap<Integer, String> listOfValues = new HashMap<Integer, String>(); 
+		listOfValues.put(0, get_csvFileName.reservationMadeOn());
+		listOfValues.put(1, get_csvFileName.setPaymentName(payment_settings, room_name, cc_owner, reservation_status));
+		listOfValues.put(2, confirmation_number);
+		listOfValues.put(3, transact_id);
+		listOfValues.put(4, guest_name);
+		listOfValues.put(5, email_add);
+		listOfValues.put(6, mobile_no);
+		listOfValues.put(7, guest_country);
+		listOfValues.put(8, name_of_card_owner);
+		listOfValues.put(9, credit_card_number);
+		listOfValues.put(10, credit_card_expiry);
+		listOfValues.put(11, reservation_made_on);
+		listOfValues.put(12, guest_reservation_details);
+		listOfValues.put(13, estimated_of_arrival);
+		listOfValues.put(14, guest_check_in);
+		listOfValues.put(15, guest_check_out);
+		listOfValues.put(16, room_cost);
+		listOfValues.put(17, taxes);
+		listOfValues.put(18, total_reservation_cost);
+		listOfValues.put(19, prepayment_paid);
+		listOfValues.put(20, payable_at_the_hotel);
+		return listOfValues;	
 	}
 }

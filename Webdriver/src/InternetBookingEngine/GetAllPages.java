@@ -33,13 +33,14 @@ public class GetAllPages {
 		cancelReservation = new CancelReservation(driver);
 	}
 
-	public void makeReservation(String test_server, String payment_settings, int step, String room_name, int no_of_rooms, boolean ccOwner, boolean upload_image, int cancel) throws IOException{
+	public void makeReservation(String test_server, String payment_settings, int step, String room_name, int no_of_rooms, boolean ccOwner, boolean upload_image, String reservation_status) throws IOException{
 		env.openIbe(test_server, payment_settings, step);
 		if (step==1) {
 			page1.selectStayDates();
 		}
 		//		page2.dwhCopy();
 		page2.selectRoom(test_server, payment_settings, room_name, no_of_rooms);
+		//HashMap<K, V> step3_info = page3.
 		page3.clickGuestDetailsStep3();
 		page4.paymentPage(payment_settings, ccOwner);
 
@@ -49,7 +50,7 @@ public class GetAllPages {
 					onhold_modal.btnCcFraudModal().click();
 					if(upload_image){
 						onhold.uploadImages();
-						onhold.clickUploadAndContinue();;
+						onhold.clickUploadAndContinue();
 					}else{
 						onhold.onholdPending();
 
@@ -57,12 +58,13 @@ public class GetAllPages {
 				}
 			}
 		}
-
 		page5.confirmPage();
-			if(cancel==1){
-				cancelReservation.cancelReservation();				
+		System.out.println(reservation_status);
+		if(reservation_status.equals("Cancel")){
+			cancelReservation.cancelReservation();
 		}
-			page5.generateCsv(payment_settings, room_name, ccOwner, cancel);
+		page5.generateCsv(payment_settings, room_name, ccOwner, reservation_status);
+		
 
 
 	}

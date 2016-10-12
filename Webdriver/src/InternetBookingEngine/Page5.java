@@ -18,10 +18,9 @@ public class Page5 {
 	private FileWriter writer;
 	private Page5_Labels labels;
 	private Page5_Values values;
-	private ArrayList<HashMap<Integer, String>> get_label_list;
-	private ArrayList<HashMap<Integer, String>> get_values_list;
 	private File createFile;
-	
+	private HashMap<Integer, String> listOfLabel;
+	private HashMap<Integer, String> listOfValues;
 
 	public Page5(WebDriver driver) {
 		step5 = new locator_step5(driver);
@@ -35,58 +34,45 @@ public class Page5 {
 		disclaimer = step5.label_disclaimer().getText();
 		System.out.println(disclaimer);
 	}
-	
-	public void generateCsv(String payment_settings, String room_name, boolean cc_owner, int cancel) throws IOException {
+
+	public void generateCsv(String payment_settings, String room_name, boolean cc_owner, String reservation_status) throws IOException {
 		// Create and Write Reservation Details to CSV
-		createFile = new File(filePath);		
+
+		createFile = new File(filePath);
 		try {
 			writer = new FileWriter(filePath, true);
 			if(!file_has_reservationDetails_label()){
-				get_label_list = labels.get_confirmPage_labels(cancel); 
-				write_csv_reservationDetails(get_label_list);
+				listOfLabel = labels.get_confirmPage_labels(payment_settings, reservation_status);
+				for(int label_keys : listOfLabel.keySet()){
+					writer.append(listOfLabel.get(label_keys).toString().concat(","));		
+				}
+				writer.write("\r\n");
 			}
-			get_values_list = values.get_confirmPage_values(payment_settings, room_name, cc_owner, cancel);
-			write_csv_reservationDetails(get_values_list);
-			
+
+			listOfValues = values.get_confirmPage_values(payment_settings, room_name, cc_owner, reservation_status);
+			for(int value_keys : listOfValues.keySet()){
+				writer.append("\"").append(listOfValues.get(value_keys).toString()).append("\"").append(",");
+			}
+			writer.write("\r\n");
 		} catch(Exception e){
 			e.printStackTrace();
 		}
-
 		// Close CSV
 		System.out.println(disclaimer);
 		writer.flush();
 		writer.close();
 	}
-	
-	private void write_csv_reservationDetails(ArrayList<HashMap<Integer, String>> data) throws IOException {
-		for(int cell_row = 0; cell_row < data.size(); cell_row++){
-			for(int cell_column = 0; cell_column < 20; cell_column++){
-				add_backslash_character(get_values_list);
-				writer.append(data.get(cell_row).get(cell_column).toString());
-				add_backslash_character(get_values_list);
-				writer.append(",");
-			}
-			writer.write("\r\n");
-		}		
-		System.out.println("Succesfully Created!s");
-	}
-	
-	private void add_backslash_character(ArrayList<HashMap<Integer, String>> data) throws IOException {
-		if (get_values_list != null) {
-			if (data.equals(get_values_list)) {
-				writer.append("\"");					
-			}			
-		}
-	}
-	
+
 	private boolean file_has_reservationDetails_label() throws IOException {
 		@SuppressWarnings("resource")
 		BufferedReader reader = new BufferedReader(new FileReader(createFile));
 		if (reader.readLine() != null) {
-		    return true;
+			return true;
 		} else {
 			return false;
 		}
 	}
+
+
 
 }
