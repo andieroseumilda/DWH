@@ -49,36 +49,36 @@ public class SelectRatePlanAndRooms {
 		
 		// Get Element Locators
 		/*         DWH		 */
-		public WebElement nightly_partial_nonref_fullcharge() {
+		public WebElement nightlyPartialNonrefFullcharge() {
 			return wait.until(ExpectedConditions.visibilityOf(nightly_partial_nonref_fullCharge));
 		}
 		
-		public WebElement nightly_full_ref_fullCharge() {
+		public WebElement nightlyFullRefFullCharge() {
 			return wait.until(ExpectedConditions.visibilityOf(nightly_full_ref_fullCharge));
 		}
 		
-		public WebElement nightly_full_nonref_notAllowed() {
+		public WebElement nightlyFullNonrefNotAllowed() {
 			return wait.until(ExpectedConditions.visibilityOf(nightly_full_nonref_notAllowed));
 		}
 		
 		/*         HPP		 */
-		public WebElement hpp_nightly_partial_ref_fullCharge() {
+		public WebElement hppNightlyPartialRefFullCharge() {
 			return wait.until(ExpectedConditions.visibilityOf(hpp_nightly_partial_ref_fullCharge));
 		}
 		
-		public WebElement hpp_nightly_partial_nonref_notAllowed() {
+		public WebElement hppNightlyPartialNonrefNotAllowed() {
 			return wait.until(ExpectedConditions.visibilityOf(hpp_nightly_partial_nonref_notAllowed));
 		}
 		
-		public WebElement hpp_nightly_full_ref_fullCharge() {
+		public WebElement hppNightlyFullRefFullCharge() {
 			return wait.until(ExpectedConditions.visibilityOf(hpp_nightly_full_ref_fullCharge));
 		}
 		
-		public WebElement hpp_nightly_full_nonref_notAllowed() {
+		public WebElement hppNightlyFullNonrefNotAllowed() {
 			return wait.until(ExpectedConditions.visibilityOf(hpp_nightly_full_nonref_notAllowed));
 		}
 		
-		public WebElement hpp_upon_arrival() {
+		public WebElement hppUponArrival() {
 			return wait.until(ExpectedConditions.visibilityOf(hpp_upon_arrival));
 		}
 	}

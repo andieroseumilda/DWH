@@ -8,13 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class locator_onhold {
+public class LocatorOnHold {
 
 	WebDriver driver;
 	WebDriverWait wait;
 	
 	
-	public locator_onhold(WebDriver driver){
+	public LocatorOnHold(WebDriver driver){
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, 80);
 	}

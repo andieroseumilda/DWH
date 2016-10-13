@@ -10,38 +10,38 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 
 
-public class locator_step2 {
+public class LocatorStep2 {
 
 	private WebDriverWait wait;
 
 	// Constructor
-	public locator_step2(WebDriver driver) {
+	public LocatorStep2(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, 1);
 	}
 
 	// Element Locators
 	@FindBy(xpath = "html/body/div[4]/div[2]/div/div/div[2]/ul/li[5]")
-	private WebElement dwhFullRefModif;
+	private WebElement dwh_full_ref_modif;
 	
 	@FindBy(xpath = "html/body/div[4]/div[1]/a/i")
-	private WebElement closeWindow;
+	private WebElement close_window;
 
 	@FindBy(id = "ctaReserve")
-	private WebElement clickReserveNow;
+	private WebElement click_reserve_now;
 	
 	
 	// Get Element Locators
 	public WebElement dwhFullRefModif(){
-		return wait.until(elementToBeClickable(dwhFullRefModif));
+		return wait.until(elementToBeClickable(dwh_full_ref_modif));
 	}
 	
 	public WebElement closeWindow() {
-		return wait.until(elementToBeClickable(closeWindow));
+		return wait.until(elementToBeClickable(close_window));
 	}
 
 	public WebElement clickReserveNowStep2() {
-		return wait.until(elementToBeClickable(clickReserveNow));
+		return wait.until(elementToBeClickable(click_reserve_now));
 	}
 
 }

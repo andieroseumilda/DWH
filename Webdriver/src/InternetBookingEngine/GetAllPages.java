@@ -2,6 +2,7 @@ package InternetBookingEngine;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.HashMap;
 
 import org.openqa.selenium.WebDriver;
 
@@ -15,12 +16,17 @@ public class GetAllPages {
 	private Page3 page3;
 	private Page4 page4;
 	private Page5 page5;
+	private Page5Values page5_values;
 	private OnholdAndOnholdPending onhold;
-	private locator_onhold onhold_modal;
-	private CancelReservation cancelReservation;
+	private LocatorOnHold onhold_modal;
+	private CancelReservation cancel_reservation;
+	private HashMap<Integer, String> get_page3_list;
+	private HashMap<Integer, String> get_page5_list;
+	private String get_breakdownOfReservation_inPage3;
+	private String get_breakdownOfReservation_inPage5;
+	private boolean step3_and_step5_are_equal;
 
-
-	public GetAllPages(WebDriver driver) throws MalformedURLException{
+	public GetAllPages(WebDriver driver) throws MalformedURLException {
 
 		env = new Environment(driver);
 		page1 = new Page1(driver);
@@ -28,46 +34,89 @@ public class GetAllPages {
 		page3 = new Page3(driver);
 		page4 = new Page4(driver);
 		page5 = new Page5(driver);
+		page5_values = new Page5Values(driver);
 		onhold = new OnholdAndOnholdPending(driver);
-		onhold_modal = new locator_onhold(driver);
-		cancelReservation = new CancelReservation(driver);
+		onhold_modal = new LocatorOnHold(driver);
+		cancel_reservation = new CancelReservation(driver);
 	}
 
-	public void makeReservation(String test_server, String payment_settings, int step, String room_name, int no_of_rooms, boolean ccOwner, boolean upload_image, String reservation_status) throws IOException{
+	public void makeReservation(String test_server, String payment_settings, int step, String room_name, int no_of_rooms, boolean cc_owner, boolean upload_image, String reservation_status) throws IOException {
 		env.openIbe(test_server, payment_settings, step);
-		if (step==1) {
+		if (step == 1) {
 			page1.selectStayDates();
 		}
-		//		page2.dwhCopy();
+		// page2.dwhCopy();
 		page2.selectRoom(test_server, payment_settings, room_name, no_of_rooms);
-		//HashMap<K, V> step3_info = page3.
+		page3.getValuesInStep3(payment_settings);
+		get_breakdownOfReservation_inPage3 = getPage3List(payment_settings);
 		page3.clickGuestDetailsStep3();
-		page4.paymentPage(payment_settings, ccOwner);
+		page4.paymentPage(payment_settings, cc_owner);
+		step4PaymentSettings(payment_settings, room_name, cc_owner, upload_image);
+		page5.confirmPage();
+		cancelReservation(reservation_status);
+		page5.generateCsv(payment_settings, room_name, cc_owner,
+				reservation_status);
+		get_breakdownOfReservation_inPage5 = get_page5_list(payment_settings,
+				room_name, cc_owner, reservation_status);
+		step3_and_step5_are_equal = compareStep3andStep5(
+				get_breakdownOfReservation_inPage3,
+				get_breakdownOfReservation_inPage5);
+		System.out.println(step3_and_step5_are_equal);
+	}
 
-		if(payment_settings == "DWH"){
-			if(room_name == "Full Ref" || room_name == "Full Nonref" ){
-				if(!ccOwner){
+	public boolean compareStep3andStep5(String step3, String step5) {
+		if (step3.equals(step5)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public String getPage3List(String payment_settings) {
+		String get_page3_values = null;
+		get_page3_list = page3.getValuesInStep3(payment_settings);
+		for (int i = 0; i < get_page3_list.size(); i++) {
+			get_page3_values = get_page3_list.get(get_page3_list.keySet()
+					.toArray()[i]);
+			if (i == 2) {
+				get_page3_list.remove(2);
+			}
+			System.out.println(get_page3_values);
+		}
+		return get_page3_values;
+	}
+
+	public void step4PaymentSettings(String payment_settings, String room_name, boolean cc_owner, boolean upload_image) {
+		if (payment_settings.equals("DWH")) {
+			if (room_name == "Full Ref" || room_name == "Full Nonref") {
+				if (!cc_owner) {
 					onhold_modal.btnCcFraudModal().click();
-					if(upload_image){
+					if (upload_image) {
 						onhold.uploadImages();
 						onhold.clickUploadAndContinue();
-					}else{
+					} else {
 						onhold.onholdPending();
-
 					}
 				}
 			}
 		}
-		page5.confirmPage();
-		System.out.println(reservation_status);
-		if(reservation_status.equals("Cancel")){
-			cancelReservation.cancelReservation();
-		}
-		page5.generateCsv(payment_settings, room_name, ccOwner, reservation_status);
-		
-
-
 	}
 
-}
+	public void cancelReservation(String reservation_status) {
+		if (reservation_status.equals("Cancel")) {
+			cancel_reservation.cancelReservation();
+		}
+		System.out.println(reservation_status);
+	}
 
+	public String get_page5_list(String payment_settings, String room_name,	boolean cc_owner, String reservation_status) {
+		String get_page5_values = null;
+		get_page5_list = page5_values.getConfirmPageValues(payment_settings,
+				room_name, cc_owner, reservation_status);
+		for (int i = 16; i < 21; i++) {
+			get_page5_values = get_page5_list.get(get_page5_list.keySet().toArray()[i]).replace("*", "");
+			System.out.println(get_page5_values);
+		}
+		return get_page5_values;
+	}
+}

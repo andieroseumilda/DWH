@@ -8,12 +8,12 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class locator_cancel {
+public class LocatorCancel {
 
 	WebDriver driver;
 	WebDriverWait wait;
 
-	public locator_cancel(WebDriver driver){
+	public LocatorCancel(WebDriver driver){
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, 100);
 	}
@@ -27,11 +27,11 @@ public class locator_cancel {
 
 
 	// Get Element Locations
-	public WebElement click_cancel_reservation() {
+	public WebElement clickCancelReservation() {
 		return wait.until(elementToBeClickable(click_cancel_reservation)); 
 	}
 	
-	public WebElement click_yes_to_cancel() {
+	public WebElement clickYesToCancel() {
 		return wait.until(elementToBeClickable(click_yes_to_cancel)); 
 	}
 }

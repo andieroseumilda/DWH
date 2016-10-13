@@ -11,15 +11,15 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class Page2 {
 
-	private locator_step2 step2;
-	private locator_step3 step3;
+	private LocatorStep2 step2;
+	private LocatorStep3 step3;
 	private SelectRatePlanAndRooms select_room;
 	private WebDriver driver;
 	//	private Policies_copies copy;
 
 	public Page2(WebDriver driver) {
-		step2 = new locator_step2(driver);
-		step3 = new locator_step3(driver);
+		step2 = new LocatorStep2(driver);
+		step3 = new LocatorStep3(driver);
 		select_room = new SelectRatePlanAndRooms(driver);
 		this.driver = driver;
 	}
@@ -29,38 +29,36 @@ public class Page2 {
 
 		if (payment_settings=="DWH"){
 			if(room_name == "Partial Nonref"){
-				room_type = select_room.nightly_partial_nonref_fullcharge();
+				room_type = select_room.nightlyPartialNonrefFullcharge();
 			}else if(room_name == "Full Ref"){
-				room_type = select_room.nightly_full_ref_fullCharge();
+				room_type = select_room.nightlyFullRefFullCharge();
 			}else if(room_name == "Full Nonref"){
-				room_type = select_room.nightly_full_nonref_notAllowed();
+				room_type = select_room.nightlyFullNonrefNotAllowed();
 			}else{
 				System.err.println(" No rooms available");
 			}
 		}else if (payment_settings=="HPP"){
 			if(room_name == "Partial Nonref"){
-				room_type = select_room.hpp_nightly_partial_nonref_notAllowed();
+				room_type = select_room.hppNightlyPartialNonrefNotAllowed();
 			}else if(room_name == "Partial Ref"){
-				room_type = select_room.hpp_nightly_partial_ref_fullCharge();
+				room_type = select_room.hppNightlyPartialRefFullCharge();
 			}else if(room_name == "Full Ref"){
-				room_type = select_room.hpp_nightly_full_ref_fullCharge();
+				room_type = select_room.hppNightlyFullRefFullCharge();
 			}else if(room_name == "Full Nonref"){
-				room_type = select_room.hpp_nightly_full_nonref_notAllowed();
+				room_type = select_room.hppNightlyFullNonrefNotAllowed();
 			}else{
-				room_type = select_room.hpp_upon_arrival();
+				room_type = select_room.hppUponArrival();
 			}
 		}else{
 			System.out.println("No payment processor");
 		}
-
-
 
 		Select room = new Select(room_type);
 		room.selectByIndex(no_of_rooms);
 		clickReserveNow();
 		try {
 			WebDriverWait wait = new WebDriverWait(driver, 3);
-			wait.until(visibilityOf(step3.cta_step3()));
+			wait.until(visibilityOf(step3.ctaStep3()));
 		} catch (Exception e) {
 			if (driver.getCurrentUrl().contains("reservation/showRooms")) {
 				clickReserveNow();

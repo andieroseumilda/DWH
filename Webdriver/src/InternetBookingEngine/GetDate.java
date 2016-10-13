@@ -16,8 +16,8 @@ public class GetDate {
 	private WebDriverWait wait;
 	private int get_day_format = Calendar.DATE;
 	private Calendar now;
-	private String get_day;
-	private String get_departure;
+	private String get_arrival_date;
+	private String set_departure_date;
 	private DateFormat date_format = new SimpleDateFormat("d");
 	
 	protected GetDate(WebDriver driver) {
@@ -28,18 +28,18 @@ public class GetDate {
 	protected void selectArrivalDate(){
 		this.now = Calendar.getInstance();
 		now.add(get_day_format, 2);
-		Date complete_date_1 = now.getTime();
-		get_day = date_format.format(complete_date_1); 
-		WebElement arrivalDate = wait.until(elementToBeClickable(By.linkText(String.valueOf(get_day))));
-		arrivalDate.click();
+		Date set_arrival_date = now.getTime();
+		get_arrival_date = date_format.format(set_arrival_date); 
+		WebElement arrival_date = wait.until(elementToBeClickable(By.linkText(String.valueOf(get_arrival_date))));
+		arrival_date.click();
 	}
 	
 	protected void selectDeparture(){
 		this.now.add(get_day_format, 2);
-		Date complete_date_2 = now.getTime();
-		get_departure = date_format.format(complete_date_2);  // added dates
-		WebElement departureDate = wait.until(elementToBeClickable(By.linkText(String.valueOf(get_departure))));
-		departureDate.click();
+		Date get_departure_date = now.getTime();
+		set_departure_date = date_format.format(get_departure_date);  // added dates
+		WebElement departure_date = wait.until(elementToBeClickable(By.linkText(String.valueOf(set_departure_date))));
+		departure_date.click();
 	}
 
 }

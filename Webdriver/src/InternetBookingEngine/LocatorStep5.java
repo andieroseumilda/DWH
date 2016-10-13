@@ -7,12 +7,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-public class locator_step5 {
+public class LocatorStep5 {
 
 	private WebDriverWait wait;
 
 	// Constructor
-	public locator_step5(WebDriver driver) {
+	public LocatorStep5(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, 60);
 	}
@@ -85,7 +85,7 @@ public class locator_step5 {
 	
 
 	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Show details')]")
-	private WebElement click_show_details_link;
+	private WebElement show_details_link;
 	
 
 	@FindBy(xpath = "//div[@class='row']//td[contains(.,'Prepayment - PAID:')]")
@@ -185,153 +185,153 @@ public class locator_step5 {
 	}
 	
 
-	public WebElement label_cnumber() {
+	public WebElement labelCnumber() {
 		return wait.until(visibilityOf(label_cnumber));
 	}
 	
-	public WebElement label_transaction_id() {
+	public WebElement labelTransactionId() {
 		return wait.until(visibilityOf(label_transaction_id));
 	}
 	
-	public WebElement label_guest_name() {
+	public WebElement labelGuestName() {
 		return wait.until(visibilityOf(label_guest_name));
 	}
 	
-	public WebElement label_email_add() {
+	public WebElement labelEmailAdd() {
 		return wait.until(visibilityOf(label_email_add));
 	}
 	
-	public WebElement label_mobile_no() {
+	public WebElement labelMobileNo() {
 		return wait.until(visibilityOf(label_mobile_no));
 	}
 	
-	public WebElement label_country() {
+	public WebElement labelCountry() {
 		return wait.until(visibilityOf(label_country));
 	}
 	
-	public WebElement label_name_of_card_owner() {
+	public WebElement labelNameOfCardOwner() {
 		return wait.until(visibilityOf(label_name_of_card_owner));
 	}
 	
-	public WebElement label_card_number() {
+	public WebElement labelCardNumber() {
 		return wait.until(visibilityOf(label_card_number));
 	}
 	
-	public WebElement label_credit_card_expiry() {
+	public WebElement labelCreditCardExpiry() {
 		return wait.until(visibilityOf(label_credit_card_expiry));
 	}
 	
-	public WebElement label_reservation_made_on() {
+	public WebElement labelReservationMadeOn() {
 		return wait.until(visibilityOf(label_reservation_made_on));
 	}
 	
-	public WebElement label_reservation_details() {
+	public WebElement labelReservationDetails() {
 		return wait.until(visibilityOf(label_reservation_details));
 	}
 	
-	public WebElement label_estimated_of_arrival() {
+	public WebElement labelEstimatedOfArrival() {
 		return wait.until(visibilityOf(label_estimated_of_arrival));
 	}
 	
-	public WebElement label_check_in() {
+	public WebElement labelCheckIn() {
 		return wait.until(visibilityOf(label_check_in));
 	}
 	
-	public WebElement label_check_out() {
+	public WebElement labelCheckOut() {
 		return wait.until(visibilityOf(label_check_out));
 	}
 	
-	public WebElement label_room_cost() {
+	public WebElement labelRoomCost() {
 		return wait.until(visibilityOf(label_room_cost));
 	}
 		
-	public WebElement label_taxes() {
+	public WebElement labelTaxes() {
 		return wait.until(visibilityOf(label_taxes));
 	}
 	
-	public WebElement label_total_reservation_cost() {
+	public WebElement labelTotalReservationCost() {
 		return wait.until(visibilityOf(label_total_reservation_cost));
 	}
 	
-	public WebElement click_show_details_link() {
-		return wait.until(visibilityOf(click_show_details_link));
+	public WebElement ShowDetailsLink() {
+		return wait.until(visibilityOf(show_details_link));
 	}
 	
-	public WebElement dwh_label_prepayment_paid() {
+	public WebElement dwhLabelPrepaymentPaid() {
 		return wait.until(visibilityOf(dwh_label_prepayment_paid));
 	}
 	
-	public WebElement hpp_label_prepayment() {
+	public WebElement hppLabelPrepayment() {
 		return wait.until(visibilityOf(hpp_label_prepayment));
 	}
 	
-	public WebElement label_payable_at_the_hotel() {
+	public WebElement labelPayableAtTheHotel() {
 		return wait.until(visibilityOf(label_payable_at_the_hotel));
 	}
 	
-	public WebElement label_disclaimer() {
+	public WebElement labelDisclaimer() {
 		return wait.until(visibilityOf(label_disclaimer));
 	}
 	
 	/*   Guest Reservation Details	 */
 	
-	public WebElement confirmation_number() {
+	public WebElement confirmationNumber() {
 		return wait.until(visibilityOf(confirmation_number));
 	}
 	
-	public WebElement transaction_id() {
+	public WebElement transactionId() {
 		return wait.until(visibilityOf(transaction_id));
 	}
 	
-	public WebElement guest_name() {
+	public WebElement guestName() {
 		return wait.until(visibilityOf(guest_name));
 	}
 	
-	public WebElement email_add() {
+	public WebElement emailAdd() {
 		return wait.until(visibilityOf(email_add));
 	}
 	
-	public WebElement mobile_no() {
+	public WebElement mobileNo() {
 		return wait.until(visibilityOf(mobile_no));
 	}
 	
-	public WebElement guest_country() {
+	public WebElement guestCountry() {
 		return wait.until(visibilityOf(guest_country));
 	}
 	
-	public WebElement name_of_card_owner() {
+	public WebElement nameOfCardOwner() {
 		return wait.until(visibilityOf(name_of_card_owner));
 	}
 	
-	public WebElement credit_card_number() {
+	public WebElement creditCardNumber() {
 		return wait.until(visibilityOf(credit_card_number));
 	}
 	
-	public WebElement credit_card_expiry() {
+	public WebElement creditCardExpiry() {
 		return wait.until(visibilityOf(credit_card_expiry));
 	}
 	
-	public WebElement reservation_made_on() {
+	public WebElement reservationMadeOn() {
 		return wait.until(visibilityOf(reservation_made_on));
 	}
 	
-	public WebElement guest_reservation_details() {
+	public WebElement guestReservationDetails() {
 		return wait.until(visibilityOf(guest_reservation_details));
 	}
 	
-	public WebElement estimated_of_arrival() {
+	public WebElement estimatedOfArrival() {
 		return wait.until(visibilityOf(estimated_of_arrival));
 	}
 	
-	public WebElement guest_check_in() {
+	public WebElement guestCheckIn() {
 		return wait.until(visibilityOf(guest_check_in));
 	}
 	
-	public WebElement guest_check_out() {
+	public WebElement guestCheckOut() {
 		return wait.until(visibilityOf(guest_check_out));
 	}
 	
-	public WebElement room_cost() {
+	public WebElement roomCost() {
 		return wait.until(visibilityOf(room_cost));
 	}
 	
@@ -339,19 +339,19 @@ public class locator_step5 {
 		return wait.until(visibilityOf(taxes));
 	}
 	
-	public WebElement total_reservation_cost() {
+	public WebElement totalReservationCost() {
 		return wait.until(visibilityOf(total_reservation_cost));
 	}
 	
-	public WebElement dwh_prepayment_paid() {
+	public WebElement dwhPrepaymentPaid() {
 		return wait.until(visibilityOf(dwh_prepayment_paid));
 	}
 	
-	public WebElement hpp_prepayment() {
+	public WebElement hppPrepayment() {
 		return wait.until(visibilityOf(hpp_prepayment));
 	}
 	
-	public WebElement payable_at_the_hotel() {
+	public WebElement payableAtTheHotel() {
 		return wait.until(visibilityOf(payable_at_the_hotel));
 	}
 	

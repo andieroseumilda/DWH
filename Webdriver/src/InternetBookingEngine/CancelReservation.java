@@ -6,17 +6,17 @@ import org.openqa.selenium.WebDriver;
 
 public class CancelReservation {
 	WebDriver driver;
-	private locator_cancel cancel;
+	private LocatorCancel cancel;
 
 	public CancelReservation(WebDriver driver) {
 		this.driver = driver;
-		cancel = new locator_cancel(driver);
+		cancel = new LocatorCancel(driver);
 	}
 
 	public void cancelReservation(){
 		
-		cancel.click_cancel_reservation().click();
-		cancel.click_yes_to_cancel().click();
+		cancel.clickCancelReservation().click();
+		cancel.clickYesToCancel().click();
 //		try {
 //			WebDriverWait wait = new WebDriverWait(driver, 10);
 //			wait.until(visibilityOf(cancel.click_cancel_reservation()));

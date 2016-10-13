@@ -4,108 +4,108 @@ import org.openqa.selenium.WebDriver;
 
 public class Page4 {
 
-	private String firstName;
-	private String lastName;
-	private String emailAdd;
-	private String emailConfirm;
+	private String first_name;
+	private String last_name;
+	private String email_add;
+	private String email_confirm;
 	private String country;
-	private String cnNumber;
+	private String cn_number;
 	private String adult;
-	private String sRequest;
-	private String ccType;
-	private String ccNumber;
-	private String ccName;
-	private String expMonth;
-	private String expYear;
-	private String ccV;
-	private locator_step4 step4;
+	private String special_request;
+	private String cc_type;
+	private String cc_number;
+	private String cc_name;
+	private String exp_month;
+	private String exp_year;
+	private String ccv;
+	private LocatorStep4 step4;
 
 	public Page4(WebDriver driver) {
-		step4 = new locator_step4(driver);
+		step4 = new LocatorStep4(driver);
 	}
 
 	public void paymentPage(String payment_settings, boolean cc_owner) {
-		step4.firstName().sendKeys(get_firstname(payment_settings));
-		step4.lastName().sendKeys(get_lastName(payment_settings));
-		step4.emailAdd().sendKeys(get_emailAdd(payment_settings));
-		step4.emailConfirm().sendKeys(get_emailConfirm(payment_settings));
-		step4.country().sendKeys(get_country(payment_settings));
-		step4.cnNumber().sendKeys(get_cnNumber(payment_settings));
-		step4.no_of_adult().sendKeys(get_adult(payment_settings));
-		step4.sRequest().sendKeys(get_sRequest(payment_settings));
-		step4.ccType().sendKeys(get_ccType(payment_settings));
-		step4.ccNumber().sendKeys(get_ccNumber(payment_settings));
+		step4.firstName().sendKeys(getFirstName(payment_settings));
+		step4.lastName().sendKeys(getLastName(payment_settings));
+		step4.emailAdd().sendKeys(getEmailAdd(payment_settings));
+		step4.emailConfirm().sendKeys(getEmailConfirm(payment_settings));
+		step4.country().sendKeys(getCountry(payment_settings));
+		step4.cnNumber().sendKeys(getCnNumber(payment_settings));
+		step4.noOfAdult().sendKeys(getAdult(payment_settings));
+		step4.sRequest().sendKeys(getSpecialRequest(payment_settings));
+		step4.ccType().sendKeys(getCcType(payment_settings));
+		step4.ccNumber().sendKeys(getCcNumber(payment_settings));
 		if(cc_owner){
 			step4.yesOwner().click();
 		}else{
 			step4.notOwner().click();
-			step4.ccName().sendKeys(get_ccName(payment_settings));
+			step4.ccName().sendKeys(getCcName(payment_settings));
 		}
-		step4.expMonth().sendKeys(get_expMonth(payment_settings));
-		step4.expYear().sendKeys(get_expYear(payment_settings));
-		step4.ccV().sendKeys(get_ccV(payment_settings));
+		step4.expMonth().sendKeys(getExpMonth(payment_settings));
+		step4.expYear().sendKeys(getExpYear(payment_settings));
+		step4.ccV().sendKeys(getCcV(payment_settings));
 		step4.agree().click();
 		step4.btnConfirm().click();
 	}
 
-	private String get_firstname(String payment_settings) {
+	private String getFirstName(String payment_settings) {
 
 		switch (payment_settings) {
 		case "DWH":
-			firstName = "Test";
+			first_name = "Test";
 			break;
 		case "HPP":
-			firstName = "HPP";
+			first_name = "HPP";
 			break;
 		default:
 			System.out.println("end");
 		}
-		return firstName;
+		return first_name;
 	}
 
-	private String get_lastName(String payment_settings) {
+	private String getLastName(String payment_settings) {
 		switch (payment_settings) {
 		case "DWH":
-			lastName = "Reservation";
+			last_name = "Reservation";
 			break;
 		case "HPP":
-			lastName = "HPP";
+			last_name = "HPP";
 			break;
 		default:
 			System.out.println("end");
 		}
-		return lastName;
+		return last_name;
 	}
 
-	private String get_emailAdd(String payment_settings) {
+	private String getEmailAdd(String payment_settings) {
 		switch (payment_settings) {
 		case "DWH":
-			emailAdd = "dwh.testemail@gmail.com";
+			email_add = "dwh.testemail@gmail.com";
 			break;
 		case "HPP":
-			emailAdd = "dwh.testemail@gmail.com";
+			email_add = "dwh.testemail@gmail.com";
 			break;
 		default:
 			System.out.println("end");
 		}
-		return emailAdd;
+		return email_add;
 	}
 	
-	private String get_emailConfirm(String payment_settings){
+	private String getEmailConfirm(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			emailConfirm = "dwh.testemail@gmail.com";
+			email_confirm = "dwh.testemail@gmail.com";
 			break;
 		case "HPP":
-			emailConfirm = "dwh.testemail@gmail.com";
+			email_confirm = "dwh.testemail@gmail.com";
 			break;
 		default:
 			System.out.println("end");
 		}		
-		return emailConfirm;
+		return email_confirm;
 	}
 
-	private String get_country(String payment_settings){
+	private String getCountry(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
 			country = "Philippines";
@@ -119,22 +119,22 @@ public class Page4 {
 		return country;
 	}
 
-	private String get_cnNumber(String payment_settings){
+	private String getCnNumber(String payment_settings){
 
 		switch (payment_settings) {
 		case "DWH":
-			cnNumber = "91345664217";
+			cn_number = "91345664217";
 			break;
 		case "HPP":
-			cnNumber = "12345678";
+			cn_number = "12345678";
 			break;
 		default:
 			System.out.println("end");
 		}
-		return cnNumber;
+		return cn_number;
 	}
 
-	private String get_adult(String payment_settings){
+	private String getAdult(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
 			adult = "1";
@@ -148,102 +148,102 @@ public class Page4 {
 		return adult;
 	}
 
-	private String get_sRequest(String payment_settings){
+	private String getSpecialRequest(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			sRequest = "DWH special request";
+			special_request = "DWH special request";
 			break;
 		case "HPP":
-			sRequest = "HPP  special request";
+			special_request = "HPP  special request";
 			break;
 		default:
 			System.out.println("end");
 		}		
-		return sRequest;
+		return special_request;
 	}
 	
-	private String get_ccType(String payment_settings){
+	private String getCcType(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			ccType = "Visa";
+			cc_type = "Visa";
 			break;
 		case "HPP":
-			ccType = "Visa";
+			cc_type = "Visa";
 			break;
 		default:
 			System.out.println("end");
 		}		
-		return ccType;
+		return cc_type;
 	}
 	
-	private String get_ccNumber(String payment_settings){
+	private String getCcNumber(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			ccNumber = "4111111111111111";
+			cc_number = "4111111111111111";
 			break;
 		case "HPP":
-			ccNumber = "4222222222222";
+			cc_number = "4222222222222";
 			break;
 		default:
 			System.out.println("end");
 		}		
-		return ccNumber;
+		return cc_number;
 	}
 	
-	private String get_ccName(String payment_settings){
+	private String getCcName(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			ccName = "On hold Prepayment";
+			cc_name = "On hold Prepayment";
 			break;
 		case "HPP":
-			ccName = "On hold Prepayment";
+			cc_name = "On hold Prepayment";
 			break;
 		default:
 			System.out.println("end");
 		}		
-		return ccName;
+		return cc_name;
 	}
 	
-	private String get_expMonth(String payment_settings){
+	private String getExpMonth(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			expMonth = "5";
+			exp_month = "5";
 			break;
 		case "HPP":
-			expMonth = "8";
+			exp_month = "8";
 			break;
 		default:
 			System.out.println("end");
 		}		
-		return expMonth;
+		return exp_month;
 	}
 	
-	private String get_expYear(String payment_settings){
+	private String getExpYear(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			expYear = "2017";
+			exp_year = "2017";
 			break;
 		case "HPP":
-			expYear = "2017";
+			exp_year = "2017";
 			break;
 		default:
 			System.out.println("end");
 		}		
-		return expYear;
+		return exp_year;
 	}
 	
-	private String get_ccV(String payment_settings){
+	private String getCcV(String payment_settings){
 		switch (payment_settings) {
 		case "DWH":
-			ccV = "234";
+			ccv = "234";
 			break;
 		case "HPP":
-			ccV = "654";
+			ccv = "654";
 			break;
 		default:
 			System.out.println("end");
 		}		
-		return ccV;
+		return ccv;
 	}
 	
 }

@@ -5,11 +5,11 @@ import org.openqa.selenium.WebDriver;
 
 public class OnholdAndOnholdPending {
 
-	private locator_onhold onhold;
+	private LocatorOnHold onhold;
 	WebDriver driver;
 
 	public OnholdAndOnholdPending(WebDriver driver) {
-		onhold = new locator_onhold(driver);
+		onhold = new LocatorOnHold(driver);
 		this.driver = driver;
 	}
 

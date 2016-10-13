@@ -7,87 +7,87 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
-public class locator_step4 {
+public class LocatorStep4 {
 
 	private WebDriverWait wait;
 
 	// Constructor
-	public locator_step4(WebDriver driver) {
+	public LocatorStep4(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, 40);
 	}
 
 	// Element Locator
 	@FindBy(id = "payment_first_name")
-	private WebElement firstName;
+	private WebElement first_name;
 
 	@FindBy(id = "payment_last_name")
-	private WebElement lastName;
+	private WebElement last_name;
 
 	@FindBy(id = "payment_email")
-	private WebElement emailAdd;
+	private WebElement email_add;
 
 	@FindBy(id = "payment_email_confirm")
-	private WebElement emailConfirm;
+	private WebElement email_confirm;
 
 	@FindBy(id = "payment_country")
 	private WebElement country;
 
 	@FindBy(id = "payment_contact_number")
-	private WebElement cnNumber;
+	private WebElement confirmation_number;
 
 	@FindBy(id = "payment_adults")
 	private WebElement no_of_adult;
 
 	@FindBy(id = "payment_specialrequest")
-	private WebElement sRequest;
+	private WebElement special_request;
 
 	@FindBy(id = "payment_cc_type")
-	private WebElement ccType;
+	private WebElement cc_type;
 
 	@FindBy(id = "payment_cc_number")
-	private WebElement ccNumber;
+	private WebElement cc_number;
 
 	@FindBy(id = "opt_yes")
-	private WebElement yesOwner;
+	private WebElement yes_owner;
 	
 	@FindBy(id = "opt_no")
-	private WebElement notOwner;
+	private WebElement not_owner;
 	
 	@FindBy(id = "payment_cc_name")
-	private WebElement ccName;
+	private WebElement cc_name;
 
 	@FindBy(id = "payment_cc_exp_month")
-	private WebElement expMonth;
+	private WebElement exp_month;
 
 	@FindBy(id = "payment_cc_exp_year")
-	private WebElement expYear;
+	private WebElement exp_year;
 
 	@FindBy(id = "payment_cc_cvv")
-	private WebElement ccV;
+	private WebElement ccv;
 
 	@FindBy(id = "payment_agree")
 	private WebElement agree;
 
 	@FindBy(id = "btnconfirmbooking")
-	private WebElement btnConfirm;
+	private WebElement btn_confirm;
 
 	
 	// Get Element Locator
 	public WebElement firstName() {
-		return wait.until(visibilityOf(firstName));
+		return wait.until(visibilityOf(first_name));
 	}
 
 	public WebElement lastName() {
-		return wait.until(visibilityOf(lastName));
+		return wait.until(visibilityOf(last_name));
 	}
 
 	public WebElement emailAdd() {
-		return emailAdd;
+		return email_add;
 	}
 
 	public WebElement emailConfirm() {
-		return emailConfirm;
+		return email_confirm;
 	}
 
 	public WebElement country() {
@@ -95,47 +95,47 @@ public class locator_step4 {
 	}
 
 	public WebElement cnNumber() {
-		return cnNumber;
+		return confirmation_number;
 	}
 
-	public WebElement no_of_adult() {
+	public WebElement noOfAdult() {
 		return no_of_adult;
 	}
 
 	public WebElement sRequest() {
-		return sRequest;
+		return special_request;
 	}
 
 	public WebElement ccType() {
-		return ccType;
+		return cc_type;
 	}
 
 	public WebElement ccNumber() {
-		return ccNumber;
+		return cc_number;
 	}
 
 	public WebElement yesOwner() {
-		return yesOwner;
+		return yes_owner;
 	}
 	
 	public WebElement notOwner() {
-		return notOwner;
+		return not_owner;
 	}
 	
 	public WebElement ccName() {
-		return ccName;
+		return cc_name;
 	}
 
 	public WebElement expMonth() {
-		return expMonth;
+		return exp_month;
 	}
 
 	public WebElement expYear() {
-		return expYear;
+		return exp_year;
 	}
 
 	public WebElement ccV() {
-		return ccV;
+		return ccv;
 	}
 
 	public WebElement agree() {
@@ -143,8 +143,6 @@ public class locator_step4 {
 	}
 
 	public WebElement btnConfirm() {
-		return btnConfirm;
+		return btn_confirm;
 	}
-	
-
 }

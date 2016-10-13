@@ -6,7 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-public class Page5_Csv_Scenario {
+public class Page5CsvScenario {
 	private String room_type;
 
 	private Calendar now;
@@ -17,7 +17,6 @@ public class Page5_Csv_Scenario {
 		now = Calendar.getInstance();
 		Date complete_date_1 = now.getTime();
 		get_time = date_format.format(complete_date_1); 	
-		System.out.println(get_time);
 		return get_time;
 	}
 	

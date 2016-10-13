@@ -8,23 +8,23 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class locator_step1 {
+public class LocatorStep1 {
 
 	private WebDriverWait wait;
 	
 
 	// Constructor
-	public locator_step1(WebDriver driver) {
+	public LocatorStep1(WebDriver driver) {
 		PageFactory.initElements(driver, this);
 		this.wait = new WebDriverWait(driver, 60);
 	}
 	
 	// Element Locations
 	@FindBy(id = "btnNext")
-	private WebElement clickViewRoomAndPrices;
+	private WebElement click_view_room_and_prices;
 
 	// Get Element Locations
 	public WebElement clickViewRoomAndPrices() {
-		return wait.until(elementToBeClickable(clickViewRoomAndPrices));
+		return wait.until(elementToBeClickable(click_view_room_and_prices));
 	}
 }
