@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import Browser.Browsers;
+
 public class InputDataIBE {
 	private WebDriver driver;
 	private Browsers browser;

@@ -1,5 +1,5 @@
 
-package InternetBookingEngine;
+package Browser;
 
 import java.net.MalformedURLException;
 import java.net.URL;
