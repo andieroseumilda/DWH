@@ -18,8 +18,8 @@ public class Page3 {
 		step3.ctaStep3().click();	
 	}
 	
-	public HashMap<Integer, String> getValuesInStep3(String payment_settings){
-		return step3_values.step3Values(payment_settings);
+	public HashMap<Integer, String> getValuesInStep3(String payment_settings, String room_name){
+		return step3_values.step3Values(payment_settings, room_name);
 	
 	}
 

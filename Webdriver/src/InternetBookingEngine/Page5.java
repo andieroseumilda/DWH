@@ -65,11 +65,7 @@ public class Page5 {
 	private boolean fileHasReservationDetailsLabel() throws IOException {
 		@SuppressWarnings("resource")
 		BufferedReader reader = new BufferedReader(new FileReader(create_file));
-		if (reader.readLine() != null) {
-			return true;
-		} else {
-			return false;
-		}
+		return (reader.readLine() != null) ? true : false;
 	}
 
 

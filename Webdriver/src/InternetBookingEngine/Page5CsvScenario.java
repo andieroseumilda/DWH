@@ -21,20 +21,20 @@ public class Page5CsvScenario {
 	}
 	
 	public String setPaymentName(String payment_settings, String room_name, boolean cc_owner, String cancel){
-		if (payment_settings=="DWH"){
-			if(room_name == "Partial Nonref"){
+		if (payment_settings.equals("DWH")){
+			if(room_name.equals("Partial Nonref")){
 				if(cancel=="Cancel"){
 					room_type = "DWH_Partial_NonRef_Cancelled_Reservation";
 				}else{
 					room_type = "DWH_Partial_NonRef";
 				}
-			}else if(room_name == "Full Ref"){
+			}else if(room_name.equals("Full Ref")){
 				if(cc_owner){
 				room_type = "DWH_Full_Ref";
 				}else{
 					room_type = "DWH_Full_Ref_ONHOLD";
 				}
-			}else if(room_name == "Full Nonref"){
+			}else if(room_name.equals("Full Nonref")){
 				if(cc_owner){
 					room_type = "DWH_Full_NonRef";
 					}else{
@@ -43,14 +43,14 @@ public class Page5CsvScenario {
 			}else{
 				System.err.println(" No rooms available");
 			}
-		}else if (payment_settings=="HPP"){
-			if(room_name == "Partial Nonref"){
+		}else if (payment_settings.equals("HPP")){
+			if(room_name.equals("Partial Nonref")){
 				room_type = "HPP_Partial_Nonref";
-			}else if(room_name == "Partial Ref"){
+			}else if(room_name.equals("Partial Ref")){
 				room_type = "HPP_Partial_Ref";
-			}else if(room_name == "Full Ref"){
+			}else if(room_name.equals("Full Ref")){
 				room_type = "HPP_Full_Ref";
-			}else if(room_name == "Full Nonref"){
+			}else if(room_name.equals("Full Nonref")){
 				room_type = "HPP_Full_Nonref";
 			}else{
 				room_type = "HPP_Upon_Arrival";
