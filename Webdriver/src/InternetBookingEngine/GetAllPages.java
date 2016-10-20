@@ -55,13 +55,9 @@ public class GetAllPages {
 		step4PaymentSettings(payment_settings, room_name, cc_owner, upload_image);
 		page5.confirmPage();
 		cancelReservation(reservation_status);
-		page5.generateCsv(payment_settings, room_name, cc_owner,
-				reservation_status);
-		get_breakdownOfReservation_inPage5 = getPage5List(payment_settings,
-				room_name, cc_owner, reservation_status);
-		step3_and_step5_are_equal = compareStep3andStep5(
-				get_breakdownOfReservation_inPage3,
-				get_breakdownOfReservation_inPage5);
+		page5.generateCsv(payment_settings, room_name, cc_owner,reservation_status);
+		get_breakdownOfReservation_inPage5 = getPage5List(payment_settings, room_name, cc_owner, reservation_status);
+		step3_and_step5_are_equal = compareStep3andStep5(get_breakdownOfReservation_inPage3, get_breakdownOfReservation_inPage5);
 		System.out.println(step3_and_step5_are_equal);
 	}
 
@@ -81,7 +77,6 @@ public class GetAllPages {
 			if(i==4 && room_name.equals("Upon Arrival")){
 				get_page3_list.remove(4);
 			}
-			System.out.println(get_page3_values);
 		}
 		
 		return get_page3_values;
@@ -112,8 +107,7 @@ public class GetAllPages {
 
 	public String getPage5List(String payment_settings, String room_name,	boolean cc_owner, String reservation_status) {
 		String get_page5_values = null;
-		get_page5_list = page5_values.getConfirmPageValues(payment_settings,
-				room_name, cc_owner, reservation_status);
+		get_page5_list = page5_values.getConfirmPageValues(payment_settings, room_name, cc_owner, reservation_status);
 		for (int i = 16; i < 21; i++) {
 			get_page5_values = get_page5_list.get(get_page5_list.keySet().toArray()[i]).replace("*", "");
 		}

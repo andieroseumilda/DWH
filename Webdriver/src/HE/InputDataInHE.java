@@ -13,6 +13,7 @@ public class InputDataInHE {
 	private Browsers browser;
 	private GetAllModule dwhHe;
 	private String test_environment = "staging";
+	private String confirmation_no;
 	
 	@BeforeMethod
 	public void setup() throws MalformedURLException {
@@ -23,11 +24,11 @@ public class InputDataInHE {
 	
 	@Test
 	public void LoginInHE() throws IOException {
-		dwhHe.accessInHe(test_environment);
+		dwhHe.accessInHe(test_environment,"DWH",confirmation_no);
 	}
 	
 	@AfterMethod
-	public void teardown() {
+	public void tearDown() {
 		driver.close();
 		driver.quit();
 	}

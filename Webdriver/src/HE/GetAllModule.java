@@ -14,10 +14,10 @@ public class GetAllModule {
 		reservation_tab = new ReservationsTab(driver);
 	}
 	
-	public void accessInHe(String test_server){
+	public void accessInHe(String test_server,String payment_settings, String confirmation_no){
 		env.openHe(test_server);
-		login.logInPage();		
-		reservation_tab.reservationsTab();
+		login.logInPage(payment_settings);		
+		reservation_tab.reservationsTab(confirmation_no);
 	}
 
 }

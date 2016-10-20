@@ -12,7 +12,6 @@ public class ReservationsTab {
 	private WebDriverWait wait;
 	WebDriver driver;
 	private LocatorReservationTab reservation_tab;
-	private String confirmation_no;
 	
 
 	
@@ -21,21 +20,15 @@ public class ReservationsTab {
 		reservation_tab = new LocatorReservationTab(driver);
 	}
 	
-	public void reservationsTab(){
+	public void reservationsTab(String confirmation_no){
 		reservation_tab.reservationsTab().click();
 		reservation_tab.searchButtonHeader().click();
-		reservation_tab.confirmationNo().sendKeys(getConfirmationNo());
+		reservation_tab.confirmationNo().sendKeys(confirmation_no);
 		reservation_tab.searchInsideThePanel().click();
-		displayConfirmationNo();
+		displayConfirmationNo(confirmation_no);
 	}
 	
-	private String getConfirmationNo(){
-		return "4273718";
-	}
-	
-	
-	private WebElement displayConfirmationNo(){
-		confirmation_no = "4273718";
+	private WebElement displayConfirmationNo(String confirmation_no){
 		WebElement confirm_no = wait.until(elementToBeClickable(By.xpath("//div[@id='gridReservations']//td//div[contains(.,'"+confirmation_no+"')]")));
 		confirm_no.isDisplayed();
 		return confirm_no;

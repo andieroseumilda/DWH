@@ -57,7 +57,6 @@ public class Page5 {
 			e.printStackTrace();
 		}
 		// Close CSV
-		System.out.println(disclaimer);
 		writer.flush();
 		writer.close();
 	}
